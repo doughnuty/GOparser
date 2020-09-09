@@ -22,7 +22,8 @@ func main() {
 
 ## Overview
 Function Parse writes contents of the file to structure Object. 
-Then, the structure is passed to the function Get, which returns the interface. The type of the value is specified by one of the methods mentioned beneath
+Then, the structure is passed to the function Get, which returns the interface. The type of the value is specified by one of the methods mentioned beneath:
+
 Currently supports such methods as 	
   * Bool() bool
   * Int() int
