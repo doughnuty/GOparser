@@ -3,6 +3,13 @@ Small parser for yaml files written in Go.
 
 ## Synopsis 
 ```GO
+package main
+
+import (
+	"fmt"
+	"parser"
+)
+
 func main() {
 	var yaml parser.Object
 	yaml.Objects = make(map[string]interface{})
