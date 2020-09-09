@@ -14,7 +14,6 @@ func main() {
 	var yaml parser.Object
 	yaml.Objects = make(map[string]interface{})
 	parser.Parse("PathToFile", &yaml)
-	//fmt.Println(yaml)
 	ans := parser.Get(&yaml, "value1", "value2", "etc").String()
 	fmt.Println(ans)
 }
