@@ -2,7 +2,7 @@
 Small parser for yaml files written in Go. 
 
 ## Synopsis 
-```
+```GO
 func main() {
 	var yaml parser.Object
 	yaml.Objects = make(map[string]interface{})
