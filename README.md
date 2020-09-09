@@ -2,7 +2,8 @@
 Small parser for yaml files written in Go. 
 
 ## Synopsis 
-```func main() {
+```
+func main() {
 	var yaml parser.Object
 	yaml.Objects = make(map[string]interface{})
 	parser.Parse("PathToFile", &yaml)
