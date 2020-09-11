@@ -4,7 +4,8 @@ import (
 	"reflect"
 )
 
-func (ans *Answer) seekVal(source *Object, path []string) interface{} {
+// Searches for values from path in the source Object
+func (ans *Answer) seekVal(source Object, path []string) interface{} {
 	//	fmt.Println(source.Objects[path[0]])
 	// how much elements in path
 	length := len(path)
@@ -21,15 +22,15 @@ func (ans *Answer) seekVal(source *Object, path []string) interface{} {
 		if reflect.TypeOf(*someArray) == reflect.TypeOf(temp) {
 			*someArray = temp.([]interface{})
 			pathNum++
-			for j, _ := range *someArray {
+			for j := range *someArray {
 				someObject = (*someArray)[j].(Object)
 				if someObject.Objects[path[pathNum]] != nil {
-					source = &someObject
+					source = someObject
 				}
 			}
 		} else if reflect.TypeOf(temp) == reflect.TypeOf(someObject) {
 			someObject = temp.(Object)
-			source = &someObject
+			source = someObject
 		}
 	}
 	return source.Objects[path[length-1]]

@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// Checks if proper spacing was applied
 func spacing(line string, space int) int {
 	for i, char := range line {
 		if char != ' ' && i < space { // if not enough spacing exit
