@@ -22,23 +22,28 @@ type Answer struct {
 
 // Subjects is an interface with supported type of values
 type Subjects interface {
-	Bool() bool
-	Int() int
-	String() string
-	Float64() float64
-	Duration() time.Duration
-	StringSlice() []string
-	StringMap() map[string]interface{}
-	Bytes() []byte
+	Bool(def bool) (bool, error)
+	Int(def int) (int, error)
+	String(def string) (string, error)
+	Float64(def float64) (float64, error)
+	Duration(def time.Duration) (time.Duration, error)
+	StringSlice(def []string) ([]string, error)
+	StringMap(def map[string]interface{}) (map[string]interface{}, error)
+	Bytes() ([]byte, error)
+}
+
+func Init() Object {
+	var object Object
+	object.Objects = make(map[string]interface{})
+	return object
 }
 
 // Parse is a function used to fill an Object structure
-func Parse(source string, dest *Object) {
+func (dest *Object) Parse(source string) error {
 	// open
 	file, err := os.Open(source)
 	if err != nil {
-		fmt.Println(err)
-		return
+		return err
 	}
 	defer file.Close()
 
@@ -53,22 +58,20 @@ func Parse(source string, dest *Object) {
 	}
 
 	// createObject recursively to fill dest
-	createObject(text, dest, 0)
-
-	return
+	return createObject(text, dest, 0)
 }
 
 // Get is a function to get value from the Object structure
-func Get(source *Object, path ...string) Subjects {
+func (dest *Object) Get(path ...string) Subjects {
 	var ans Answer
 	// check if nil
-	if source == nil {
+	if dest == nil {
 		fmt.Println("Empty Object")
 		return ans
 	}
 
 	// seek for the path recursively
-	ans.val = ans.seekVal(*source, path)
+	ans.val = ans.seekVal(*dest, path)
 
 	return ans
 }

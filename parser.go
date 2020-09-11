@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"fmt"
+	"errors"
 	"strings"
 )
 
@@ -55,7 +55,10 @@ func arrayCheck(buf []string, space int) (bool, []interface{}) {
 			//if it is, create an Object and append it to the array
 			var newObject Object // create recursively new object
 			newObject.Objects = make(map[string]interface{})
-			createObject(buf, &newObject, space)
+			err := createObject(buf, &newObject, space)
+			if err != nil {
+				return false, *array
+			}
 			*array = append(*array, newObject)
 		} else {
 			//if it's not append a string
@@ -67,25 +70,24 @@ func arrayCheck(buf []string, space int) (bool, []interface{}) {
 
 // Fills Object struct with values taken from buf.
 // Uses yaml syntax, tracks spacing with space integer
-func createObject(buf []string, object *Object, space int) {
+func createObject(buf []string, object *Object, space int) error {
 	// foreach line
 	for lineNum, line := range buf {
 
 		// check if spacing applied
 		spacing := spacing(line, space)
 		if spacing == 0 { // if not enough return
-			return
+			return nil
 		} else if spacing == 1 { // if too much spacing skip
 			continue
 		}
 
 		split := strings.SplitN(line, ": ", 2) // search for ':' character
-		// if not found panic
+		// if not found return
 		if len(split) <= 1 {
 			split = strings.SplitN(line, ":", 2)
 			if len(split) <= 1 {
-				fmt.Println("On line ", split)
-				panic("not key, not array")
+				return errors.New("formatting error")
 			}
 		}
 
@@ -97,7 +99,7 @@ func createObject(buf []string, object *Object, space int) {
 			lineNum++ // increase line counter
 
 			if len(buf) <= lineNum { // check if line exist
-				panic("Not enough values in the file")
+				return errors.New("not enough values in the file")
 			}
 
 			// check if next line starts with '-' to make an array
@@ -115,10 +117,13 @@ func createObject(buf []string, object *Object, space int) {
 			} else {
 				var newObject Object // create recursively new object
 				newObject.Objects = make(map[string]interface{})
-				createObject(buf[lineNum:], &newObject, space+2)
+				err := createObject(buf[lineNum:], &newObject, space+2)
+				if err != nil {
+					return errors.New("formatting error")
+				}
 				object.Objects[key] = newObject
 			}
 		}
 	}
-	return
+	return nil
 }
