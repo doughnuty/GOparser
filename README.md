@@ -28,10 +28,10 @@ Then, the structure is passed to the function Get, which returns the interface. 
 
 Currently supports such methods as 	
 Bool(def bool) (bool, error)
-	* Int(def int) (int, error)
-	* String(def string) (string, error)
-	* Float64(def float64) (float64, error)
-	* Duration(def time.Duration) (time.Duration, error)
-	* StringSlice(def []string) ([]string, error)
-	* StringMap(def map[string]interface{}) (map[string]interface{}, error)
-	* Bytes() ([]byte, error)
+ * Int(def int) (int, error)
+ * String(def string) (string, error)
+ * Float64(def float64) (float64, error)
+ * Duration(def time.Duration) (time.Duration, error)
+ * StringSlice(def []string) ([]string, error)
+ * StringMap(def map[string]interface{}) (map[string]interface{}, error)
+ * Bytes() ([]byte, error)
