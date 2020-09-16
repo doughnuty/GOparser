@@ -22,24 +22,24 @@ type Answer struct {
 
 // Subjects is an interface with supported type of values
 type Subjects interface {
-	Bool(def bool) (bool, error)
-	Int(def int) (int, error)
-	String(def string) (string, error)
-	Float64(def float64) (float64, error)
-	Duration(def time.Duration) (time.Duration, error)
-	StringSlice(def []string) ([]string, error)
-	StringMap(def map[string]interface{}) (map[string]interface{}, error)
-	Bytes() ([]byte, error)
+	Bool(def bool) bool
+	Int(def int) int
+	String(def string) string
+	Float64(def float64) float64
+	Duration(def time.Duration) time.Duration
+	StringSlice(def []string) []string
+	StringMap(def map[string]interface{}) map[string]interface{}
+	Bytes() []byte
 }
 
-func Init() Object {
+func CreateYamlParser() Object {
 	var object Object
 	object.Objects = make(map[string]interface{})
 	return object
 }
 
 // Parse is a function used to fill an Object structure
-func (dest *Object) Parse(source string) error {
+func (object *Object) Parse(source string) error {
 	// open
 	file, err := os.Open(source)
 	if err != nil {
@@ -58,20 +58,20 @@ func (dest *Object) Parse(source string) error {
 	}
 
 	// createObject recursively to fill dest
-	return createObject(text, dest, 0)
+	return object.createObject(text, 0)
 }
 
 // Get is a function to get value from the Object structure
-func (dest *Object) Get(path ...string) Subjects {
+func (object *Object) Get(path ...string) Subjects {
 	var ans Answer
 	// check if nil
-	if dest == nil {
+	if object == nil {
 		fmt.Println("Empty Object")
 		return ans
 	}
 
 	// seek for the path recursively
-	ans.val = ans.seekVal(*dest, path)
+	ans.val = ans.seekVal(*object, path)
 
 	return ans
 }
