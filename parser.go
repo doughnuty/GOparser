@@ -53,9 +53,8 @@ func arrayCheck(buf []string, space int) (bool, []interface{}) {
 		objects := strings.SplitN(split[1], ":", 2)
 		if len(objects) == 2 {
 			//if it is, create an Object and append it to the array
-			var newObject Object // create recursively new object
-			newObject.Objects = make(map[string]interface{})
-			err := createObject(buf, &newObject, space)
+			newObject := CreateYamlParser()
+			err := newObject.createObject(buf, space)
 			if err != nil {
 				return false, *array
 			}
@@ -70,7 +69,7 @@ func arrayCheck(buf []string, space int) (bool, []interface{}) {
 
 // Fills Object struct with values taken from buf.
 // Uses yaml syntax, tracks spacing with space integer
-func createObject(buf []string, object *Object, space int) error {
+func (object Object) createObject(buf []string, space int) error {
 	// foreach line
 	for lineNum, line := range buf {
 
@@ -115,9 +114,8 @@ func createObject(buf []string, object *Object, space int) error {
 				lineNum += len(array)
 				object.Objects[key] = array
 			} else {
-				var newObject Object // create recursively new object
-				newObject.Objects = make(map[string]interface{})
-				err := createObject(buf[lineNum:], &newObject, space+2)
+				newObject := CreateYamlParser()
+				err := newObject.createObject(buf[lineNum:], space+2)
 				if err != nil {
 					return errors.New("formatting error")
 				}
