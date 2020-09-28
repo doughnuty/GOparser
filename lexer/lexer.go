@@ -1,0 +1,99 @@
+package lexer
+
+import (
+	"theRealParser/token"
+	"unicode"
+	"unicode/utf8"
+)
+
+type Lexer struct {
+	name   string
+	Input  string
+	tokens chan token.Token
+	state  lexState
+
+	start 	int
+	pos		int
+	width 	int
+
+	Adjacent token.Token
+	Current  token.Token
+}
+
+func (lexer *Lexer) ignore() {
+	lexer.start = lexer.pos
+}
+
+// increment position
+func (lexer *Lexer) increment() {
+	lexer.pos++
+	if lexer.pos >= utf8.RuneCountInString(lexer.Input) {
+		lexer.pos--
+		lexer.putToken(token.TOKEN_EOF)
+	}
+}
+
+// check if EOF
+func (lexer *Lexer) isEOF() bool {
+	//fmt.Println(lexer.input)
+	return lexer.pos >= len(lexer.Input)
+}
+
+// advances to the next position
+func (lexer *Lexer) next() rune {
+	if lexer.pos >= utf8.RuneCountInString(lexer.Input) {
+		lexer.width = 0
+		return token.EOF
+	}
+
+	result, width := utf8.DecodeRuneInString(lexer.Input[lexer.pos:])
+
+	lexer.width = width
+	lexer.pos += lexer.width
+	return result
+}
+
+// return next token from channel
+func (lexer *Lexer) NextToken() token.Token {
+
+	if lexer.state == nil {
+		return lexer.Adjacent
+	}
+	for {
+		select {
+		case t := <-lexer.tokens:
+			return t
+		default:
+			lexer.state = lexer.state(lexer)
+		}
+	}
+
+}
+
+// put token into token channel
+func (lexer *Lexer) putToken(tokenMod token.TokenMod) {
+	lexer.tokens <- token.Token{Mod: tokenMod, Value: lexer.Input[lexer.start:lexer.pos]}
+	lexer.start = lexer.pos
+}
+
+// skip spaces until something meaningful or a new line appears
+func (lexer *Lexer) skipBlank() {
+	for {
+		ch := lexer.next()
+
+		if ch == '\n' || !unicode.IsSpace(ch) {
+			lexer.pos--
+			lexer.ignore()
+			break
+		}
+
+		if ch == token.EOF {
+			lexer.putToken(token.TOKEN_EOF)
+			break
+		}
+	}
+}
+
+func (lexer *Lexer) toEnd() string {
+	return lexer.Input[lexer.pos:]
+}

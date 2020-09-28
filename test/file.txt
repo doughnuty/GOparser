@@ -1,0 +1,12 @@
+student:
+  personal:
+    ID: 654321
+    Name: A
+    HeightHistory: 103.6
+    HoursActive: 1h2m3s
+  clubs:
+    Art: Studio
+worker:
+  personal:
+    ID: 123456
+    Name: B
