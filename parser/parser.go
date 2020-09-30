@@ -8,14 +8,20 @@ import (
 )
 
 type Yaml struct {
-	Map map[string]property
+	Map     map[string]Property
 	Spacing int
 }
 
-type property struct {
+type Property struct {
 	mod string
 	val interface{}
 }
+
+const (
+	VAL_MOD string = "value"
+	MAP_MOD string = "map"
+	ARR_MOD string = "array"
+)
 
 type Mod interface {
 	Bool(def bool) bool
@@ -29,7 +35,7 @@ type Mod interface {
 }
 
 func NewYaml() Yaml {
-	return Yaml{Map: make(map[string]property)}
+	return Yaml{Map: make(map[string]Property)}
 }
 
 func (yaml *Yaml) Parse(filename string) error {
@@ -44,7 +50,7 @@ func (yaml *Yaml) Parse(filename string) error {
 
 	lexer := lexer2.LexerStart(filename, str)
 	lexer.Adjacent = lexer.NextToken()
-	fmt.Println(lexer.Input)
+
 	err = yaml.parseTokens(lexer)
 	if err != nil {
 		return err
@@ -52,14 +58,12 @@ func (yaml *Yaml) Parse(filename string) error {
 	return err
 }
 
-func (yaml *Yaml) PrintYaml() {
-	fmt.Println(yaml)
-}
-
 /*
 func (yaml Yaml) Get(path ...string) Mod {
 	if yaml == nil {
-
+		return nil
 	}
+
+	return Property
 }
 */

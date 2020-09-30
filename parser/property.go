@@ -6,20 +6,7 @@ import (
 	"theRealParser/lexer"
 	"theRealParser/token"
 )
-/*
-func countSpaces(spaceString string) (count int) {
 
-	fmt.Println(spaceString, len(spaceString))
-	for count = range spaceString {
-		if spaceString[count] != ' ' {
-
-		}
-		count++
-	}
-
-	return count
-}
-*/
 func (yaml *Yaml) parseTokens(lexer *lexer.Lexer) error {
 
 	keyVal := ""
@@ -36,7 +23,7 @@ func (yaml *Yaml) parseTokens(lexer *lexer.Lexer) error {
 			keyVal = lexer.Current.Value
 
 		case token.TOKEN_VALUE:
-			(*yaml).Map[keyVal] = property{
+			(*yaml).Map[keyVal] = Property{
 				mod: "value",
 				val: strings.TrimSpace(lexer.Current.Value),
 			}
@@ -44,8 +31,8 @@ func (yaml *Yaml) parseTokens(lexer *lexer.Lexer) error {
 
 		case token.TOKEN_COLON:
 			if lexer.Adjacent.Mod == token.TOKEN_SPACES {
-				// create new property
-				newProperty := property{
+				// create new Property
+				newProperty := Property{
 					mod: "map",
 				}
 				// create new yaml
@@ -58,7 +45,7 @@ func (yaml *Yaml) parseTokens(lexer *lexer.Lexer) error {
 					return err
 				}
 
-				// assign new yaml to the property
+				// assign new yaml to the Property
 				newProperty.val = newYaml
 
 				// add it to the last key value
