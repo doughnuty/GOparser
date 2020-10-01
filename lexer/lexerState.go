@@ -9,71 +9,41 @@ import (
 
 type lexState func(*Lexer) lexState
 
+func LexStart(name, input string) *Lexer {
+	lexer := &Lexer{
+		name:   name,
+		Input:  input,
+		state:  lexBegin,
+		tokens: make(chan token.Token, 3),
+	}
+
+	return lexer
+}
+
+func lexBegin(lexer *Lexer) lexState {
+	t := rune(lexer.Input[lexer.pos])
+	if unicode.IsSpace(t) {
+		lexer.pos--
+		return lexIndent
+	} else if t == token.HASH {
+
+	}
+	return lexKey
+}
+
 // place error into chan
 func (lexer *Lexer) error(format string) lexState {
 	lexer.tokens <- token.Token{
 		Mod:   token.TOKEN_ERROR,
 		Value: format,
 	}
-	return nil
-}
-
-func lexValue(lexer *Lexer) lexState {
-	for {
-		if unicode.IsSpace(lexer.next()) {
-			lexer.pos--
-			lexer.putToken(token.TOKEN_VALUE)
-			lexer.skipBlank()
-			return lexBegin
-		}
-
-		if lexer.isEOF() {
-			//return lexer.error(errors.LEXER_ERROR_UNEXPECTED_EOF)
-			lexer.putToken(token.TOKEN_VALUE)
-			return lexEOF
-		}
-
-		lexer.increment()
-
-	}
-}
-
-func lexColumn(lexer *Lexer) lexState {
-	lexer.pos += len(token.COLON)
-	lexer.putToken(token.TOKEN_COLON)
-
-	lexer.skipBlank()
-	if strings.HasPrefix(lexer.toEnd(), token.NL) {
-		lexer.increment()
-		lexer.ignore()
-		return lexBegin
-	}
-	return lexValue
-}
-
-func lexEOF(lexer *Lexer) lexState {
-	lexer.putToken(token.TOKEN_EOF)
-	return nil
-}
-func lexKey(lexer *Lexer) lexState {
-	for {
-		if lexer.isEOF() {
-			return lexer.error(errors.LEXER_ERROR_MISSING_COLON)
-		}
-
-		if strings.HasPrefix(lexer.toEnd(), token.COLON) {
-			lexer.putToken(token.TOKEN_KEY)
-			return lexColumn
-		}
-
-		lexer.increment()
-	}
+	return lexEOF
 }
 
 func lexIndent(lexer *Lexer) lexState {
 	t := rune(lexer.Input[lexer.pos])
 	for unicode.IsSpace(t) {
-		if t != ' ' {
+		if t != token.SPACE {
 			lexer.ignore()
 		}
 		t = lexer.next()
@@ -87,22 +57,61 @@ func lexIndent(lexer *Lexer) lexState {
 	return lexKey
 }
 
-func lexBegin(lexer *Lexer) lexState {
-	t := rune(lexer.Input[lexer.pos])
-	if unicode.IsSpace(t) {
-		lexer.pos--
-		return lexIndent
+func lexKey(lexer *Lexer) lexState {
+	for {
+		if lexer.isEOF() {
+			return lexer.error(errors.LEXER_ERROR_MISSING_COLON)
+		}
+
+		if strings.HasPrefix(lexer.toEnd(), string(token.COLON)) {
+			lexer.putToken(token.TOKEN_KEY)
+			return lexColumn
+		}
+
+		lexer.increment()
 	}
-	return lexKey
 }
 
-func LexerStart(name, input string) *Lexer {
-	lexer := &Lexer{
-		name:   name,
-		Input:  input,
-		state:  lexBegin,
-		tokens: make(chan token.Token, 3),
-	}
+func lexColumn(lexer *Lexer) lexState {
+	lexer.pos += 1
+	lexer.putToken(token.TOKEN_COLON)
 
-	return lexer
+	if lexer.skipBlank() {
+		return lexer.error(errors.LEXER_ERROR_UNEXPECTED_EOF)
+	}
+	if strings.HasPrefix(lexer.toEnd(), string(token.NL)) {
+		lexer.increment()
+		if lexer.isEOF() {
+			lexer.pos--
+			return lexEOF
+		}
+		lexer.ignore()
+		return lexBegin
+	}
+	return lexValue
+}
+
+func lexValue(lexer *Lexer) lexState {
+	for {
+		if lexer.isEOF() {
+			lexer.pos--
+			lexer.putToken(token.TOKEN_VALUE)
+			return lexEOF
+		}
+
+		if unicode.IsSpace(lexer.next()) {
+			lexer.pos--
+			lexer.putToken(token.TOKEN_VALUE)
+			lexer.skipBlank()
+
+			return lexBegin
+		}
+
+		lexer.increment()
+	}
+}
+
+func lexEOF(lexer *Lexer) lexState {
+	lexer.putToken(token.TOKEN_EOF)
+	return nil
 }

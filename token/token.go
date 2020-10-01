@@ -1,10 +1,11 @@
 package token
 
+const COLON rune = ':'
+const DASH rune = '-'
 const EOF rune = 0
-const SPACE string = " "
-const COLON string = ":"
-const DASH string = "-"
-const NL string = "\n"
+const HASH rune = '#'
+const NL rune = '\n'
+const SPACE rune = ' '
 
 type Token struct {
 	Mod   TokenMod

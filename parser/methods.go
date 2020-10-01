@@ -13,7 +13,7 @@ type Mod interface {
 	String(def string) string
 	Float64(def float64) float64
 	Duration(def time.Duration) time.Duration
-	/*		StringSlice(def []string) []string*/
+	//StringSlice(def []string) []string
 	StringMap(def map[string]string) map[string]string
 	Bytes() []byte
 }

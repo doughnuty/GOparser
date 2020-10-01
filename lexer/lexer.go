@@ -12,9 +12,9 @@ type Lexer struct {
 	tokens chan token.Token
 	state  lexState
 
-	start 	int
-	pos		int
-	width 	int
+	start int
+	pos   int
+	width int
 
 	Adjacent token.Token
 	Current  token.Token
@@ -27,10 +27,6 @@ func (lexer *Lexer) ignore() {
 // increment position
 func (lexer *Lexer) increment() {
 	lexer.pos++
-	if lexer.pos >= utf8.RuneCountInString(lexer.Input) {
-		lexer.pos--
-		lexer.putToken(token.TOKEN_EOF)
-	}
 }
 
 // check if EOF
@@ -67,7 +63,6 @@ func (lexer *Lexer) NextToken() token.Token {
 			lexer.state = lexer.state(lexer)
 		}
 	}
-
 }
 
 // put token into token channel
@@ -77,12 +72,32 @@ func (lexer *Lexer) putToken(tokenMod token.TokenMod) {
 }
 
 // skip spaces until something meaningful or a new line appears
-func (lexer *Lexer) skipBlank() {
+func (lexer *Lexer) skipBlank() (isEOF bool) {
 	for {
 		ch := lexer.next()
 
+		if ch == token.EOF {
+			//lexer.putToken(token.TOKEN_EOF)
+			isEOF = true
+			break
+		}
+
 		if ch == '\n' || !unicode.IsSpace(ch) {
 			lexer.pos--
+			lexer.ignore()
+			isEOF = false
+			break
+		}
+
+	}
+	return isEOF
+}
+
+func (lexer *Lexer) skipLine() {
+	for {
+		ch := lexer.next()
+
+		if ch == '\n' {
 			lexer.ignore()
 			break
 		}

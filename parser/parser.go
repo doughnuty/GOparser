@@ -9,6 +9,14 @@ import (
 	"theRealParser/token"
 )
 
+// true - is ok
+// false - not ok
+func (yaml *Yaml) checkIndentSpaces(l *lexer.Lexer) bool {
+	valLen := len(l.Adjacent.Value)
+	return valLen > yaml.Spacing &&
+		valLen%2 == 0
+}
+
 func NewYaml() Yaml {
 	return Yaml{Map: make(map[string]Property)}
 }
@@ -23,7 +31,7 @@ func (yaml *Yaml) Parse(filename string) error {
 
 	str := string(buf)
 
-	l := lexer.LexerStart(filename, str)
+	l := lexer.LexStart(filename, str)
 	l.Adjacent = l.NextToken()
 
 	err = yaml.parseTokens(l)
@@ -56,7 +64,7 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 			keyVal = ""
 
 		case token.TOKEN_COLON:
-			if l.Adjacent.Mod == token.TOKEN_SPACES {
+			if l.Adjacent.Mod == token.TOKEN_SPACES && yaml.checkIndentSpaces(l) {
 				// create new Property
 				newProperty := Property{
 					Mod: "map",
@@ -80,11 +88,16 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 					return nil
 				}
 
-			} else if l.Adjacent.Mod == token.TOKEN_VALUE {
-				continue
-			} else {
-				return errors.New("unexpected colon")
+			} else if l.Adjacent.Mod == token.TOKEN_SPACES && !yaml.checkIndentSpaces(l) {
+				// if colon followed by spaces and indentation is not proper report
+				fmt.Println(l.Adjacent.Value)
+				return errors.New("expected value found new line")
 			}
+			/*else if l.Adjacent.Mod == token.TOKEN_VALUE {
+				continue
+			} else  {
+				return errors.New("unexpected error")
+			}*/
 
 		case token.TOKEN_SPACES:
 			spaceNum := len(l.Current.Value)
