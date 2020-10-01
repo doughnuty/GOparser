@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab4cb059-08e1-4c83-92ff-a94b6dfd10c8" name="Default Changelist" comment="" />
+    <list default="true" id="ab4cb059-08e1-4c83-92ff-a94b6dfd10c8" name="Default Changelist" comment="Getter refactoring">
+      <change afterPath="$PROJECT_DIR$/getter/get.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/getter/methods.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/parser.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser/property.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/property.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,13 +39,20 @@
     </option>
   </component>
   <component name="GOROOT" path="C:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1hg79lf3U8PbbZcq4mn81IhFxR5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
@@ -60,6 +91,23 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added methods Need refactor" />
+    <MESSAGE value="Getter refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Getter refactoring" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="262" y="0" width="1012" height="864" key="#Intentions" timestamp="1600638844456">
       <screen x="0" y="0" width="1536" height="864" />
@@ -77,50 +125,54 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="763" height="605" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1601134093667" />
-    <state width="1480" height="261" key="GridCell.Tab.0.bottom" timestamp="1601300087895">
+    <state width="1492" height="223" key="GridCell.Tab.0.bottom" timestamp="1601492282473">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1480" height="261" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601300087895" />
-    <state width="1480" height="261" key="GridCell.Tab.0.center" timestamp="1601300087895">
+    <state width="1492" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601492282473" />
+    <state width="1492" height="223" key="GridCell.Tab.0.center" timestamp="1601492282473">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1480" height="261" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1601300087895" />
-    <state width="1480" height="261" key="GridCell.Tab.0.left" timestamp="1601300087895">
+    <state width="1492" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1601492282473" />
+    <state width="1492" height="223" key="GridCell.Tab.0.left" timestamp="1601492282473">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1480" height="261" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1601300087895" />
-    <state width="1480" height="261" key="GridCell.Tab.0.right" timestamp="1601300087895">
+    <state width="1492" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1601492282473" />
+    <state width="1492" height="223" key="GridCell.Tab.0.right" timestamp="1601492282473">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1480" height="261" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1601300087895" />
-    <state width="1480" height="261" key="GridCell.Tab.1.bottom" timestamp="1601300087896">
+    <state width="1492" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1601492282473" />
+    <state width="1480" height="261" key="GridCell.Tab.1.bottom" timestamp="1601307452756">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1480" height="261" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601300087896" />
-    <state width="1480" height="261" key="GridCell.Tab.1.center" timestamp="1601300087895">
+    <state width="1480" height="261" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601307452756" />
+    <state width="1480" height="261" key="GridCell.Tab.1.center" timestamp="1601307452756">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1480" height="261" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1601300087895" />
-    <state width="1480" height="261" key="GridCell.Tab.1.left" timestamp="1601300087895">
+    <state width="1480" height="261" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1601307452756" />
+    <state width="1480" height="261" key="GridCell.Tab.1.left" timestamp="1601307452756">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1480" height="261" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1601300087895" />
-    <state width="1480" height="261" key="GridCell.Tab.1.right" timestamp="1601300087895">
+    <state width="1480" height="261" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1601307452756" />
+    <state width="1480" height="261" key="GridCell.Tab.1.right" timestamp="1601307452756">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1480" height="261" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1601300087895" />
+    <state width="1480" height="261" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1601307452756" />
     <state width="623" height="498" key="SwitcherDM" timestamp="1600645514480">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="623" height="498" key="SwitcherDM/0.0.1536.864@0.0.1536.864" timestamp="1600645514480" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1601475403710">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1601475403710" />
     <state x="219" y="97" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1601297795546">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="219" y="97" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864" timestamp="1601297795546" />
-    <state x="535" y="125" width="1032" height="544" key="dock-window-1" timestamp="1601298517658">
+    <state x="-90" y="230" width="1032" height="544" key="dock-window-1" timestamp="1601305787193">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="535" y="125" width="1032" height="544" key="dock-window-1/0.0.1536.864@0.0.1536.864" timestamp="1601298517658" />
+    <state x="-90" y="230" width="1032" height="544" key="dock-window-1/0.0.1536.864@0.0.1536.864" timestamp="1601305787193" />
     <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1600646131523">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -129,11 +181,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/lexer/lexer.go</url>
-          <line>56</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
         <line-breakpoint type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/lexer/lexer.go</url>
           <line>79</line>

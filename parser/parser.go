@@ -1,38 +1,13 @@
 package parser
 
 import (
+	"errors"
 	"fmt"
 	"io/ioutil"
-	lexer2 "theRealParser/lexer"
-	"time"
+	"strings"
+	"theRealParser/lexer"
+	"theRealParser/token"
 )
-
-type Yaml struct {
-	Map     map[string]Property
-	Spacing int
-}
-
-type Property struct {
-	mod string
-	val interface{}
-}
-
-const (
-	VAL_MOD string = "value"
-	MAP_MOD string = "map"
-	ARR_MOD string = "array"
-)
-
-type Mod interface {
-	Bool(def bool) bool
-	Int(def int) int
-	String(def string) string
-	Float64(def float64) float64
-	Duration(def time.Duration) time.Duration
-	StringSlice(def []string) []string
-	StringMap(def map[string]interface{}) map[string]interface{}
-	Bytes() []byte
-}
 
 func NewYaml() Yaml {
 	return Yaml{Map: make(map[string]Property)}
@@ -48,22 +23,78 @@ func (yaml *Yaml) Parse(filename string) error {
 
 	str := string(buf)
 
-	lexer := lexer2.LexerStart(filename, str)
-	lexer.Adjacent = lexer.NextToken()
+	l := lexer.LexerStart(filename, str)
+	l.Adjacent = l.NextToken()
 
-	err = yaml.parseTokens(lexer)
+	err = yaml.parseTokens(l)
 	if err != nil {
 		return err
 	}
 	return err
 }
 
-/*
-func (yaml Yaml) Get(path ...string) Mod {
-	if yaml == nil {
-		return nil
-	}
+func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 
-	return Property
+	keyVal := ""
+
+	for {
+		l.Current = l.Adjacent
+		l.Adjacent = l.NextToken()
+
+		switch l.Current.Mod {
+		case token.TOKEN_ERROR:
+			return errors.New(l.Current.Value)
+
+		case token.TOKEN_KEY:
+			keyVal = l.Current.Value
+
+		case token.TOKEN_VALUE:
+			(*yaml).Map[keyVal] = Property{
+				Mod: "value",
+				Val: strings.TrimSpace(l.Current.Value),
+			}
+			keyVal = ""
+
+		case token.TOKEN_COLON:
+			if l.Adjacent.Mod == token.TOKEN_SPACES {
+				// create new Property
+				newProperty := Property{
+					Mod: "map",
+				}
+				// create new yaml
+				newYaml := NewYaml()
+
+				// write number of spaces and parse
+				// newYaml.Spacing = countSpaces(l.adjacent.value)
+				err := newYaml.parseTokens(l)
+				if err != nil {
+					return err
+				}
+
+				// assign new yaml to the Property
+				newProperty.Val = newYaml
+
+				// add it to the last key value
+				(*yaml).Map[keyVal] = newProperty
+				if l.Current.Mod == token.TOKEN_SPACES && len(l.Current.Value) < yaml.Spacing {
+					return nil
+				}
+
+			} else if l.Adjacent.Mod == token.TOKEN_VALUE {
+				continue
+			} else {
+				return errors.New("unexpected colon")
+			}
+
+		case token.TOKEN_SPACES:
+			spaceNum := len(l.Current.Value)
+			if spaceNum < yaml.Spacing {
+				//yaml.Spacing = countSpaces(token.value)
+				return nil
+			}
+			yaml.Spacing = spaceNum
+		case token.TOKEN_EOF:
+			return nil
+		}
+	}
 }
-*/
