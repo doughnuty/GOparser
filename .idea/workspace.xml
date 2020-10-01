@@ -20,11 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab4cb059-08e1-4c83-92ff-a94b6dfd10c8" name="Default Changelist" comment="Getter refactoring">
-      <change afterPath="$PROJECT_DIR$/getter/get.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/getter/methods.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/parser.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getter/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/get.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getter/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/methods.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/property.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/property.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +56,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,11 +67,22 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\USer\go\src\theRealParser\parser" />
+      <recent name="C:\Users\USer\go\src\theRealParser\" />
+      <recent name="C:\Users\USer\go\src\theRealParser\getter" />
       <recent name="C:\Users\USer\go\src\theRealParser\lexer" />
       <recent name="C:\Users\USer\go\src\theRealParser\token" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Build.go build theRealParser/test">
+    <configuration name="go build test.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="theRealParser" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/test/test.go" />
+      <package value="theRealParser" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build theRealParser/test" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="theRealParser" />
       <working_directory value="$PROJECT_DIR$/test" />
@@ -84,6 +95,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build theRealParser/test" />
+        <item itemvalue="Go Build.go build test.go" />
       </list>
     </recent_temporary>
   </component>
@@ -125,22 +137,26 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="763" height="605" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1601134093667" />
-    <state width="1492" height="223" key="GridCell.Tab.0.bottom" timestamp="1601492282473">
+    <state x="550" y="188" key="FileChooserDialogImpl" timestamp="1601553344279">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601492282473" />
-    <state width="1492" height="223" key="GridCell.Tab.0.center" timestamp="1601492282473">
+    <state x="550" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1601553344279" />
+    <state width="1492" height="223" key="GridCell.Tab.0.bottom" timestamp="1601555679815">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1601492282473" />
-    <state width="1492" height="223" key="GridCell.Tab.0.left" timestamp="1601492282473">
+    <state width="1492" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601555679815" />
+    <state width="1492" height="223" key="GridCell.Tab.0.center" timestamp="1601555679815">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1601492282473" />
-    <state width="1492" height="223" key="GridCell.Tab.0.right" timestamp="1601492282473">
+    <state width="1492" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1601555679815" />
+    <state width="1492" height="223" key="GridCell.Tab.0.left" timestamp="1601555679814">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1601492282473" />
+    <state width="1492" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1601555679814" />
+    <state width="1492" height="223" key="GridCell.Tab.0.right" timestamp="1601555679815">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1492" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1601555679815" />
     <state width="1480" height="261" key="GridCell.Tab.1.bottom" timestamp="1601307452756">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -161,10 +177,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="623" height="498" key="SwitcherDM/0.0.1536.864@0.0.1536.864" timestamp="1600645514480" />
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1601475403710">
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1601552494971">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1601475403710" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1601552494971" />
     <state x="219" y="97" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1601297795546">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
