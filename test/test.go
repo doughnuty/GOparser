@@ -12,6 +12,6 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println(yaml.Get("student", "personal").String("Name"))
+		fmt.Println(yaml.Get("student", "personal").StringMap(nil))
 	}
 }
