@@ -1,12 +1,20 @@
 student:
   personal:
     ID: 654321
-    Name:
+    Name: A
     HeightHistory: 103.6
     HoursActive: 1h2m3s
+
   clubs:
-    Art: Studio
+    Art:
+      ToDo:
+        - Exhibition
+        - New Album
+
 worker:
   personal:
     ID: 123456
     Name: B
+  pets:
+    - dog
+    - cat

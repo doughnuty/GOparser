@@ -21,14 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ab4cb059-08e1-4c83-92ff-a94b6dfd10c8" name="Default Changelist" comment="Working samples Add more methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/errors/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/errors/errors.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexer/lexer.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexer/lexer.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lexer/lexerState.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexer/lexerState.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/methods.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/parser.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test/file.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token/token.go" beforeDir="false" afterPath="$PROJECT_DIR$/token/token.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,10 +131,14 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="221" y="79" width="1094" height="736" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1601133291469" />
-    <state x="677" y="127" width="396" height="611" key="#xdebugger.XInspectDialog" timestamp="1601294763339">
+    <state x="677" y="127" width="396" height="611" key="#xdebugger.XInspectDialog" timestamp="1601932374549">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="677" y="127" width="396" height="611" key="#xdebugger.XInspectDialog/0.0.1536.864@0.0.1536.864" timestamp="1601294763339" />
+    <state x="677" y="127" width="396" height="611" key="#xdebugger.XInspectDialog/0.0.1536.864@0.0.1536.864" timestamp="1601932374549" />
+    <state x="525" y="136" key="#xdebugger.evaluate" timestamp="1601932346325">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="525" y="136" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1601932346325" />
     <state width="763" height="605" key="DebuggerActiveHint" timestamp="1601134093667">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -146,46 +147,46 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="550" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1601553344279" />
-    <state width="1492" height="223" key="GridCell.Tab.0.bottom" timestamp="1601564655415">
+    <state width="1492" height="183" key="GridCell.Tab.0.bottom" timestamp="1601974195975">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601564655415" />
-    <state width="1492" height="223" key="GridCell.Tab.0.center" timestamp="1601564655415">
+    <state width="1492" height="183" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601974195975" />
+    <state width="1492" height="183" key="GridCell.Tab.0.center" timestamp="1601974195975">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1601564655415" />
-    <state width="1492" height="223" key="GridCell.Tab.0.left" timestamp="1601564655415">
+    <state width="1492" height="183" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1601974195975" />
+    <state width="1492" height="183" key="GridCell.Tab.0.left" timestamp="1601974195975">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1601564655415" />
-    <state width="1492" height="223" key="GridCell.Tab.0.right" timestamp="1601564655415">
+    <state width="1492" height="183" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1601974195975" />
+    <state width="1492" height="183" key="GridCell.Tab.0.right" timestamp="1601974195975">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1601564655415" />
-    <state width="1492" height="277" key="GridCell.Tab.1.bottom" timestamp="1601564647483">
+    <state width="1492" height="183" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1601974195975" />
+    <state width="1492" height="277" key="GridCell.Tab.1.bottom" timestamp="1601973947524">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601564647483" />
-    <state width="1492" height="277" key="GridCell.Tab.1.center" timestamp="1601564647483">
+    <state width="1492" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601973947524" />
+    <state width="1492" height="277" key="GridCell.Tab.1.center" timestamp="1601973947523">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1601564647483" />
-    <state width="1492" height="277" key="GridCell.Tab.1.left" timestamp="1601564647483">
+    <state width="1492" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1601973947523" />
+    <state width="1492" height="277" key="GridCell.Tab.1.left" timestamp="1601973947523">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1601564647483" />
-    <state width="1492" height="277" key="GridCell.Tab.1.right" timestamp="1601564647483">
+    <state width="1492" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1601973947523" />
+    <state width="1492" height="277" key="GridCell.Tab.1.right" timestamp="1601973947524">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1601564647483" />
+    <state width="1492" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1601973947524" />
     <state width="623" height="498" key="SwitcherDM" timestamp="1600645514480">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="623" height="498" key="SwitcherDM/0.0.1536.864@0.0.1536.864" timestamp="1600645514480" />
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1601557353810">
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1601974220305">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1601557353810" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1601974220305" />
     <state x="219" y="97" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1601297795546">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -204,13 +205,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>
-          <line>79</line>
+          <line>104</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/parser/parser.go</url>
           <line>91</line>
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -13,7 +13,7 @@ type Mod interface {
 	String(def string) string
 	Float64(def float64) float64
 	Duration(def time.Duration) time.Duration
-	//StringSlice(def []string) []string
+	StringSlice(def []string) []string
 	StringMap(def map[string]string) map[string]string
 	Bytes() []byte
 }
@@ -83,6 +83,14 @@ func (prop Property) Duration(def time.Duration) time.Duration {
 	return ret
 }
 
+func (prop Property) StringSlice(def []string) []string {
+	if prop.Mod != ARR_MOD {
+		return def
+	}
+
+	ret := prop.Val.([]string)
+	return ret
+}
 func (prop Property) StringMap(def map[string]string) map[string]string {
 	if prop.Mod != MAP_MOD {
 		return def

@@ -25,8 +25,6 @@ func lexBegin(lexer *Lexer) lexState {
 	if unicode.IsSpace(t) {
 		lexer.pos--
 		return lexIndent
-	} else if t == token.HASH {
-
 	}
 	return lexKey
 }
@@ -41,6 +39,10 @@ func (lexer *Lexer) error(format string) lexState {
 }
 
 func lexIndent(lexer *Lexer) lexState {
+	if lexer.isEOF() {
+		return lexEOF
+	}
+
 	t := rune(lexer.Input[lexer.pos])
 	for unicode.IsSpace(t) {
 		if t != token.SPACE {
@@ -51,10 +53,33 @@ func lexIndent(lexer *Lexer) lexState {
 	lexer.pos--
 	if t == token.EOF {
 		return lexEOF
-	} else {
-		lexer.putToken(token.TOKEN_SPACES)
+	}
+
+	lexer.putToken(token.TOKEN_SPACES)
+
+	if t == token.DASH {
+		return lexArray
 	}
 	return lexKey
+}
+
+func lexArray(lexer *Lexer) lexState {
+	for {
+		if lexer.isEOF() {
+			lexer.putToken(token.TOKEN_DASH)
+			return lexEOF
+		}
+		if rune(lexer.Input[lexer.pos]) == token.DASH {
+			lexer.pos++
+			lexer.ignore()
+		}
+		if strings.HasPrefix(lexer.toEnd(), string(token.NL)) {
+			lexer.putToken(token.TOKEN_DASH)
+			return lexIndent
+		}
+
+		lexer.increment()
+	}
 }
 
 func lexKey(lexer *Lexer) lexState {
@@ -104,7 +129,7 @@ func lexValue(lexer *Lexer) lexState {
 			lexer.putToken(token.TOKEN_VALUE)
 			lexer.skipBlank()
 
-			return lexBegin
+			return lexIndent
 		}
 
 		lexer.increment()
@@ -112,6 +137,9 @@ func lexValue(lexer *Lexer) lexState {
 }
 
 func lexEOF(lexer *Lexer) lexState {
+	if lexer.pos < lexer.start {
+		lexer.start = lexer.pos
+	}
 	lexer.putToken(token.TOKEN_EOF)
 	return nil
 }
