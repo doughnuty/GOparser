@@ -91,6 +91,7 @@ func (prop Property) StringSlice(def []string) []string {
 	ret := prop.Val.([]string)
 	return ret
 }
+
 func (prop Property) StringMap(def map[string]string) map[string]string {
 	if prop.Mod != MAP_MOD {
 		return def

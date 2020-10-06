@@ -19,13 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab4cb059-08e1-4c83-92ff-a94b6dfd10c8" name="Default Changelist" comment="Working samples Add more methods">
+    <list default="true" id="ab4cb059-08e1-4c83-92ff-a94b6dfd10c8" name="Default Changelist" comment="Add Testing">
+      <change afterPath="$PROJECT_DIR$/test/parsing_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexer/lexerState.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexer/lexerState.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/methods.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/parser.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test/file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +118,8 @@
     <MESSAGE value="Added methods Need refactor" />
     <MESSAGE value="Getter refactoring" />
     <MESSAGE value="Working samples Add more methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working samples Add more methods" />
+    <MESSAGE value="Add Testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Testing" />
   </component>
   <component name="WindowStateProjectService">
     <state x="262" y="0" width="1012" height="864" key="#Intentions" timestamp="1600638844456">
@@ -147,22 +146,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="550" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1601553344279" />
-    <state width="1492" height="183" key="GridCell.Tab.0.bottom" timestamp="1601974195975">
+    <state width="1492" height="183" key="GridCell.Tab.0.bottom" timestamp="1601975677295">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="183" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601974195975" />
-    <state width="1492" height="183" key="GridCell.Tab.0.center" timestamp="1601974195975">
+    <state width="1492" height="183" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601975677295" />
+    <state width="1492" height="183" key="GridCell.Tab.0.center" timestamp="1601975677294">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="183" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1601974195975" />
-    <state width="1492" height="183" key="GridCell.Tab.0.left" timestamp="1601974195975">
+    <state width="1492" height="183" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1601975677294" />
+    <state width="1492" height="183" key="GridCell.Tab.0.left" timestamp="1601975677294">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="183" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1601974195975" />
-    <state width="1492" height="183" key="GridCell.Tab.0.right" timestamp="1601974195975">
+    <state width="1492" height="183" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1601975677294" />
+    <state width="1492" height="183" key="GridCell.Tab.0.right" timestamp="1601975677294">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="183" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1601974195975" />
+    <state width="1492" height="183" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1601975677294" />
     <state width="1492" height="277" key="GridCell.Tab.1.bottom" timestamp="1601973947524">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -183,10 +182,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="623" height="498" key="SwitcherDM/0.0.1536.864@0.0.1536.864" timestamp="1600645514480" />
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1601974220305">
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1601974282708">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1601974220305" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1601974282708" />
     <state x="219" y="97" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1601297795546">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -207,11 +206,6 @@
           <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>
           <line>104</line>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/parser/parser.go</url>
-          <line>91</line>
-          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
