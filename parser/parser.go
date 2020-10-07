@@ -2,7 +2,6 @@ package parser
 
 import (
 	"errors"
-	"fmt"
 	"io/ioutil"
 	"strings"
 	"theRealParser/lexer"
@@ -25,7 +24,7 @@ func (yaml *Yaml) Parse(filename string) error {
 
 	buf, err := ioutil.ReadFile(filename)
 	if err != nil {
-		fmt.Println(err)
+		//fmt.Println(err)
 		return err
 	}
 
@@ -41,22 +40,19 @@ func (yaml *Yaml) Parse(filename string) error {
 	return err
 }
 
-func recursiveParse(l *lexer.Lexer) Yaml {
+func (newYaml *Yaml) recursiveParse(l *lexer.Lexer) error {
 	// create new yaml
-	newYaml := NewYaml()
+	*newYaml = NewYaml()
 	newYaml.Spacing = len(l.Current.Value)
 	// write number of spaces and parse
 	// newYaml.Spacing = countSpaces(l.adjacent.value)
 	err := newYaml.parseTokens(l)
 	if err != nil {
-		return Yaml{
-			Map:     nil,
-			Spacing: 0,
-		}
+		return err
 	}
 
 	// assign new yaml to the Property
-	return newYaml
+	return nil
 }
 
 func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
@@ -82,7 +78,7 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 				Val: strings.TrimSpace(l.Current.Value),
 			}
 			keyVal = ""
-			if len(l.Adjacent.Value) < yaml.Spacing {
+			if len(l.Adjacent.Value) < yaml.Spacing || l.Adjacent.Mod == token.TOKEN_EOF {
 				return nil
 			}
 
@@ -94,12 +90,10 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 					Mod: ARR_MOD,
 					Val: tempSlice,
 				}
-				return nil
 			}
 		case token.TOKEN_COLON:
 			if l.Adjacent.Mod == token.TOKEN_SPACES && !yaml.checkIndentSpaces(l.Adjacent.Value) {
 				// if colon followed by spaces and indentation is not proper report
-				fmt.Println(l.Adjacent.Value)
 				return errors.New("expected value found new line")
 			}
 
@@ -112,11 +106,18 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 			}
 			// if more spaces and key create map
 			if l.Adjacent.Mod == token.TOKEN_KEY && yaml.checkIndentSpaces(l.Current.Value) {
+				var newYaml Yaml
+				err := newYaml.recursiveParse(l)
+				if err != nil {
+					return err
+				}
 				(*yaml).Map[keyVal] = Property{
 					Mod: MAP_MOD,
-					Val: recursiveParse(l),
+					Val: newYaml,
 				}
 				if l.Current.Mod == token.TOKEN_SPACES && len(l.Current.Value) < yaml.Spacing {
+					return nil
+				} else if l.Adjacent.Mod == token.TOKEN_SPACES && len(l.Adjacent.Value) < yaml.Spacing {
 					return nil
 				}
 			}

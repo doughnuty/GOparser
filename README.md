@@ -7,17 +7,17 @@ package main
 
 import (
 	"fmt"
-	"parser"
+	"theRealParser/parser"
 )
 
 func main() {
-	yaml := parser.Init()
-	err := yaml.Parse("file.txt")
+	yaml := parser.NewYaml()
+	err := yaml.Parse("file.yaml")
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	ans, _ := yaml.Get("student", "personal", "Name").String("hewwo")
+	ans := yaml.Get("student", "personal", "Name").String("hewwo")
 	fmt.Println(ans)
 }
 ```

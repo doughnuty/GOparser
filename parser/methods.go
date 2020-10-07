@@ -107,8 +107,6 @@ func (prop Property) StringMap(def map[string]string) map[string]string {
 }
 
 func (prop Property) Bytes() []byte {
-	b, ok := prop.Val.([]byte)
-	fmt.Println(ok)
-	fmt.Println(b)
+	b, _ := prop.Val.([]byte)
 	return b
 }

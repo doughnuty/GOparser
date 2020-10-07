@@ -7,14 +7,25 @@ student:
 
   clubs:
     Art:
-      ToDo:
+      To_Do:
         - Exhibition
         - New Album
+
+  stats:
+    canVote: False
+    hasTime: True
 
 worker:
   personal:
     ID: 123456
     Name: B
+
   pets:
     - dog
     - cat
+
+  stats:
+    canVote: True
+    hasTime: False
+
+
