@@ -19,17 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab4cb059-08e1-4c83-92ff-a94b6dfd10c8" name="Default Changelist" comment="Testing added">
-      <change afterPath="$PROJECT_DIR$/test/errors_test.go" afterDir="false" />
+    <list default="true" id="ab4cb059-08e1-4c83-92ff-a94b6dfd10c8" name="Default Changelist" comment="More arrays and comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/errors/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/errors/errors.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexer/lexer.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexer/lexer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexer/lexerState.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexer/lexerState.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/methods.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/parser.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/file.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/test/file.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/methods_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/methods_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token/token.go" beforeDir="false" afterPath="$PROJECT_DIR$/token/token.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +134,8 @@
     <MESSAGE value="Working samples Add more methods" />
     <MESSAGE value="Add Testing" />
     <MESSAGE value="Testing added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing added" />
+    <MESSAGE value="More arrays and comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="More arrays and comments" />
   </component>
   <component name="WindowStateProjectService">
     <state x="262" y="0" width="1012" height="864" key="#Intentions" timestamp="1600638844456">
@@ -176,46 +170,46 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="550" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1601553344279" />
-    <state width="1492" height="267" key="GridCell.Tab.0.bottom" timestamp="1602198534414">
+    <state width="1492" height="176" key="GridCell.Tab.0.bottom" timestamp="1602199818935">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602198534414" />
-    <state width="1492" height="267" key="GridCell.Tab.0.center" timestamp="1602198534414">
+    <state width="1492" height="176" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602199818935" />
+    <state width="1492" height="176" key="GridCell.Tab.0.center" timestamp="1602199818935">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1602198534414" />
-    <state width="1492" height="267" key="GridCell.Tab.0.left" timestamp="1602198534414">
+    <state width="1492" height="176" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1602199818935" />
+    <state width="1492" height="176" key="GridCell.Tab.0.left" timestamp="1602199818935">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1602198534414" />
-    <state width="1492" height="267" key="GridCell.Tab.0.right" timestamp="1602198534414">
+    <state width="1492" height="176" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1602199818935" />
+    <state width="1492" height="176" key="GridCell.Tab.0.right" timestamp="1602199818935">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1602198534414" />
-    <state width="1492" height="267" key="GridCell.Tab.1.bottom" timestamp="1602198526441">
+    <state width="1492" height="176" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1602199818935" />
+    <state width="1492" height="267" key="GridCell.Tab.1.bottom" timestamp="1602199798923">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602198526441" />
-    <state width="1492" height="267" key="GridCell.Tab.1.center" timestamp="1602198526441">
+    <state width="1492" height="267" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602199798923" />
+    <state width="1492" height="267" key="GridCell.Tab.1.center" timestamp="1602199798922">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1602198526441" />
-    <state width="1492" height="267" key="GridCell.Tab.1.left" timestamp="1602198526441">
+    <state width="1492" height="267" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1602199798922" />
+    <state width="1492" height="267" key="GridCell.Tab.1.left" timestamp="1602199798922">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1602198526441" />
-    <state width="1492" height="267" key="GridCell.Tab.1.right" timestamp="1602198526441">
+    <state width="1492" height="267" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1602199798922" />
+    <state width="1492" height="267" key="GridCell.Tab.1.right" timestamp="1602199798923">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1602198526441" />
+    <state width="1492" height="267" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1602199798923" />
     <state width="623" height="498" key="SwitcherDM" timestamp="1600645514480">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="623" height="498" key="SwitcherDM/0.0.1536.864@0.0.1536.864" timestamp="1600645514480" />
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1601975764539">
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1602198592861">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1601975764539" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1602198592861" />
     <state width="774" height="438" key="XDebugger.FullValuePopup" timestamp="1602082348044">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -237,14 +231,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>
-          <line>210</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/test/methods_test.go</url>
           <line>13</line>
-          <option name="timeStamp" value="39" />
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

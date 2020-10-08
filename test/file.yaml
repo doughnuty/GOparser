@@ -22,14 +22,14 @@ worker:
     ID: 123456
     Name: B
 
-  pets: [dog, cat] # glad it works
+  pets: [dog, cat, bird, snake,] # glad it works
 
   stats:
     canVote: True
     hasTime: False
 
 noone:
-  stats:
+  more stats:
     - # what you will do this time tho
     - good job
 

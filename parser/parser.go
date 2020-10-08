@@ -83,8 +83,12 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 			}
 
 		case token.TOKEN_ARRAY:
-			tempSlice[elemSlice] = strings.TrimSpace(l.Current.Value)
-			elemSlice++
+			if elemSlice >= len(tempSlice) {
+				tempSlice = append(tempSlice, strings.TrimSpace(l.Current.Value))
+			} else {
+				tempSlice[elemSlice] = strings.TrimSpace(l.Current.Value)
+				elemSlice++
+			}
 			if len(l.Adjacent.Value) <= yaml.Spacing || l.Adjacent.Mod == token.TOKEN_EOF {
 				(*yaml).Map[keyVal] = Property{
 					Mod: ARR_MOD,
