@@ -40,13 +40,13 @@ func (yaml *Yaml) Parse(filename string) error {
 	return err
 }
 
-func (newYaml *Yaml) recursiveParse(l *lexer.Lexer) error {
+func (yaml *Yaml) recursiveParse(l *lexer.Lexer) error {
 	// create new yaml
-	*newYaml = NewYaml()
-	newYaml.Spacing = len(l.Current.Value)
+	*yaml = NewYaml()
+	yaml.Spacing = len(l.Current.Value)
 	// write number of spaces and parse
-	// newYaml.Spacing = countSpaces(l.adjacent.value)
-	err := newYaml.parseTokens(l)
+	// yaml.Spacing = countSpaces(l.adjacent.value)
+	err := yaml.parseTokens(l)
 	if err != nil {
 		return err
 	}
@@ -70,7 +70,7 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 			return errors.New(l.Current.Value)
 
 		case token.TOKEN_KEY:
-			keyVal = l.Current.Value
+			keyVal = strings.TrimSpace(l.Current.Value)
 
 		case token.TOKEN_VALUE:
 			(*yaml).Map[keyVal] = Property{
@@ -82,7 +82,7 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 				return nil
 			}
 
-		case token.TOKEN_DASH:
+		case token.TOKEN_ARRAY:
 			tempSlice[elemSlice] = strings.TrimSpace(l.Current.Value)
 			elemSlice++
 			if len(l.Adjacent.Value) <= yaml.Spacing || l.Adjacent.Mod == token.TOKEN_EOF {
@@ -99,27 +99,32 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 
 		case token.TOKEN_SPACES:
 			spaceNum := len(l.Current.Value)
+
 			// if less spaces return
 			if spaceNum < yaml.Spacing {
 				//yaml.Spacing = countSpaces(token.value)
 				return nil
 			}
 			// if more spaces and key create map
-			if l.Adjacent.Mod == token.TOKEN_KEY && yaml.checkIndentSpaces(l.Current.Value) {
-				var newYaml Yaml
-				err := newYaml.recursiveParse(l)
-				if err != nil {
-					return err
+			if l.Adjacent.Mod == token.TOKEN_KEY {
+				if yaml.checkIndentSpaces(l.Current.Value) && keyVal != "" {
+					var newYaml Yaml
+					err := newYaml.recursiveParse(l)
+					if err != nil {
+						return err
+					}
+					(*yaml).Map[keyVal] = Property{
+						Mod: MAP_MOD,
+						Val: newYaml,
+					}
+					//yaml.Spacing = spaceNum
+					if l.Current.Mod == token.TOKEN_SPACES && len(l.Current.Value) < yaml.Spacing {
+						return nil
+					} else if l.Adjacent.Mod == token.TOKEN_SPACES && len(l.Adjacent.Value) < yaml.Spacing {
+						return nil
+					}
 				}
-				(*yaml).Map[keyVal] = Property{
-					Mod: MAP_MOD,
-					Val: newYaml,
-				}
-				if l.Current.Mod == token.TOKEN_SPACES && len(l.Current.Value) < yaml.Spacing {
-					return nil
-				} else if l.Adjacent.Mod == token.TOKEN_SPACES && len(l.Adjacent.Value) < yaml.Spacing {
-					return nil
-				}
+
 			}
 
 		case token.TOKEN_EOF:

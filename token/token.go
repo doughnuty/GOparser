@@ -6,6 +6,9 @@ const EOF rune = 0
 const HASH rune = '#'
 const NL rune = '\n'
 const SPACE rune = ' '
+const LBRACKET rune = '['
+const RBRACKET rune = ']'
+const COMMA rune = ','
 
 type Token struct {
 	Mod   TokenMod
@@ -20,8 +23,7 @@ const (
 
 	TOKEN_SPACES // if space
 	TOKEN_COLON  // if colon
-	TOKEN_DASH   // if dash sign
-	TOKEN_NL     // if new line
+	TOKEN_ARRAY  // if array
 
 	TOKEN_KEY
 	TOKEN_VALUE

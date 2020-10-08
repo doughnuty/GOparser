@@ -1,9 +1,10 @@
+# Hello World
 student:
   personal:
     ID: 654321
-    Name: A
+    Name: M A
     HeightHistory: 103.6
-    HoursActive: 1h2m3s
+    HoursActive: 1h2m3s # you know its comment right?
 
   clubs:
     Art:
@@ -15,17 +16,21 @@ student:
     canVote: False
     hasTime: True
 
+# One more comment here
 worker:
   personal:
     ID: 123456
     Name: B
 
-  pets:
-    - dog
-    - cat
+  pets: [dog, cat] # glad it works
 
   stats:
     canVote: True
     hasTime: False
 
+noone:
+  stats:
+    - # what you will do this time tho
+    - good job
 
+# And here is another comment

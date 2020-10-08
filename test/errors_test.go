@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func TestCorrect(t *testing.T) {
+func TestErrors(t *testing.T) {
 	yaml := parser.NewYaml()
 
 	err := yaml.Parse("file.yaml")
@@ -16,7 +16,7 @@ func TestCorrect(t *testing.T) {
 	}
 
 	//Bool(def bool) bool
-	tempBool := yaml.Get("student", "stats", "hasTime").Bool(false)
+	tempBool := yaml.Get("student", "stats").Bool(false)
 	if reflect.TypeOf(tempBool) != reflect.TypeOf(false) {
 		t.Errorf("Conflicting types. Expected %s found %v", "bool", reflect.TypeOf(tempBool))
 	}
@@ -25,7 +25,7 @@ func TestCorrect(t *testing.T) {
 	}
 
 	//Int(def int) int
-	tempInt := yaml.Get("student", "personal", "ID").Int(0)
+	tempInt := yaml.Get("student", "personal", "HoursActive").Int(0)
 	if reflect.TypeOf(tempInt) != reflect.TypeOf(1) {
 		t.Errorf("Conflicting types. Expected %s found %v", "int", reflect.TypeOf(tempInt))
 	}
@@ -34,16 +34,16 @@ func TestCorrect(t *testing.T) {
 	}
 
 	//String(def string) string
-	tempStr := yaml.Get("student", "personal", "Name").String("Name")
+	tempStr := yaml.Get("student", "personal").String("Name")
 	if reflect.TypeOf(tempStr) != reflect.TypeOf("Name") {
 		t.Errorf("Conflicting types. Expected %s found %v", "string", reflect.TypeOf(tempStr))
 	}
-	if tempStr != "M A" {
-		t.Errorf("Bad value. Expected %s found %v", "M A", tempStr)
+	if tempStr != "A" {
+		t.Errorf("Bad value. Expected %s found %v", "A", tempStr)
 	}
 
 	//Float64(def float64) float64
-	tempFlt := yaml.Get("student", "personal", "HeightHistory").Float64(0.0)
+	tempFlt := yaml.Get("student", "personal", "").Float64(0.0)
 	if reflect.TypeOf(tempFlt) != reflect.TypeOf(0.0) {
 		t.Errorf("Conflicting types. Expected %s found %v", "float64", reflect.TypeOf(tempFlt))
 	}
@@ -53,7 +53,7 @@ func TestCorrect(t *testing.T) {
 
 	//Duration(def time.Duration) time.Duration
 	testDur, _ := time.ParseDuration("0")
-	tempDur := yaml.Get("student", "personal", "HoursActive").Duration(testDur)
+	tempDur := yaml.Get("student", "personal", "ID").Duration(testDur)
 	if reflect.TypeOf(tempDur) != reflect.TypeOf(testDur) {
 		t.Errorf("Conflicting types. Expected %s found %v", "duration", reflect.TypeOf(tempDur))
 	}
@@ -66,44 +66,34 @@ func TestCorrect(t *testing.T) {
 	testSlc := make([]string, testSlcSize)
 	testSlc[0] = "Exhibition"
 	testSlc[1] = "New Album"
-	tempSlc := yaml.Get("student", "clubs", "Art", "To_Do").StringSlice(nil)
+	tempSlc := yaml.Get("student", "clubs", "Art").StringSlice(nil)
 	if reflect.TypeOf(tempSlc) != reflect.TypeOf(testSlc) {
 		t.Errorf("Conflicting types. Expected %s found %v", "string slice", reflect.TypeOf(tempSlc))
 	}
-	if tempSlc != nil {
-		for i := range tempSlc {
-			if len(testSlc) < len(tempSlc) {
-				t.Errorf("Bad value. Expected %s found %v", "", tempSlc)
-			}
-			if tempSlc[i] != testSlc[i] {
-				t.Errorf("Bad value. Expected %s found %v", testSlc[i], tempSlc[i])
-			}
-		}
-	} else {
+	if tempSlc == nil {
 		t.Errorf("Unseccessful parse")
 	}
-
-	tempSlc = yaml.Get("worker", "pets").StringSlice(nil)
-	if tempSlc != nil {
-		if tempSlc[0] != "dog" || tempSlc[1] != "cat" {
-			t.Errorf("Bad value.")
+	for i := range tempSlc {
+		if len(testSlc) < len(tempSlc) {
+			t.Errorf("Bad value. Expected %s found %v", "", tempSlc)
 		}
-	} else {
-		t.Errorf("Unseccessful parse")
+		if tempSlc[i] != testSlc[i] {
+			t.Errorf("Bad value. Expected %s found %v", testSlc[i], tempSlc[i])
+		}
 	}
 
 	//StringMap(def map[string]string) map[string]string
 	testMap := make(map[string]string, 2)
 	testMap["ID"] = "123456"
 	testMap["Name"] = "B"
-	tempMap := yaml.Get("worker", "personal").StringMap(nil)
+	tempMap := yaml.Get("worker", "stats").StringMap(nil)
 	if reflect.TypeOf(tempMap) != reflect.TypeOf(testMap) {
 		t.Errorf("Conflicting types. Expected %s found %v", "map", reflect.TypeOf(tempMap))
 	}
 	if tempMap == nil {
 		t.Errorf("Unseccessful parse")
 
-		t.Errorf("Parsed as %v", yaml.Get("worker"))
+		t.Errorf("Parsed as %v", yaml.Get("worker", "stats"))
 	}
 	for i := range tempMap {
 		if len(testMap) < len(tempMap) {
@@ -116,7 +106,7 @@ func TestCorrect(t *testing.T) {
 
 	//Bytes() []byte
 	var testBts []byte
-	tempBts := yaml.Get("noone").Bytes()
+	tempBts := yaml.Get("").Bytes()
 	if reflect.TypeOf(tempBts) != reflect.TypeOf(testBts) {
 		t.Errorf("Conflicting types. Expected %s found %v", "", reflect.TypeOf(tempBts))
 	}

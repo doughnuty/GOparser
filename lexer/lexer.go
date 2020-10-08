@@ -51,10 +51,11 @@ func (lexer *Lexer) next() rune {
 
 // return next token from channel
 func (lexer *Lexer) NextToken() token.Token {
-
-	if lexer.state == nil {
-		return lexer.Adjacent
+	// if we reached the end no reason to search for new token
+	if lexer.Current.Mod == token.TOKEN_EOF {
+		return lexer.Current
 	}
+
 	for {
 		select {
 		case t := <-lexer.tokens:
@@ -82,7 +83,7 @@ func (lexer *Lexer) skipBlank() (isEOF bool) {
 			break
 		}
 
-		if ch == '\n' || !unicode.IsSpace(ch) {
+		if ch == token.NL || !unicode.IsSpace(ch) {
 			lexer.pos--
 			lexer.ignore()
 			isEOF = false
@@ -90,7 +91,7 @@ func (lexer *Lexer) skipBlank() (isEOF bool) {
 		}
 
 	}
-	return isEOF
+	return
 }
 
 func (lexer *Lexer) skipLine() {

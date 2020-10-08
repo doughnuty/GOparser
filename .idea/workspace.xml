@@ -20,16 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab4cb059-08e1-4c83-92ff-a94b6dfd10c8" name="Default Changelist" comment="Testing added">
-      <change afterPath="$PROJECT_DIR$/parser/file.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/methods_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser/parsing_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/methods_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/errors_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/errors/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/errors/errors.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lexer/lexer.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexer/lexer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lexer/lexerState.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexer/lexerState.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/methods.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/parser.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test/file.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/parsing_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/parsing_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/file.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/test/file.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/methods_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/methods_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/token/token.go" beforeDir="false" afterPath="$PROJECT_DIR$/token/token.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,16 +70,16 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\USer\go\src\theRealParser\parser" />
-      <recent name="C:\Users\USer\go\src\theRealParser\test" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\USer\go\src\theRealParser\parser" />
       <recent name="C:\Users\USer\go\src\theRealParser\" />
       <recent name="C:\Users\USer\go\src\theRealParser\getter" />
       <recent name="C:\Users\USer\go\src\theRealParser\lexer" />
       <recent name="C:\Users\USer\go\src\theRealParser\token" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\USer\go\src\theRealParser\parser" />
+      <recent name="C:\Users\USer\go\src\theRealParser\test" />
     </key>
   </component>
   <component name="RunManager" selected="Go Test.go test theRealParser/test">
@@ -148,6 +148,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="262" y="0" width="1012" height="864" key="#Intentions/0.0.1536.864@0.0.1536.864" timestamp="1600638844456" />
+    <state x="362" y="91" key="#JSON_Schema_Mappings" timestamp="1602191159576">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="362" y="91" key="#JSON_Schema_Mappings/0.0.1536.864@0.0.1536.864" timestamp="1602191159576" />
     <state x="221" y="79" width="1094" height="736" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601133291469">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -172,38 +176,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="550" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1601553344279" />
-    <state width="1492" height="176" key="GridCell.Tab.0.bottom" timestamp="1602085202550">
+    <state width="1492" height="267" key="GridCell.Tab.0.bottom" timestamp="1602198534414">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="176" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602085202550" />
-    <state width="1492" height="176" key="GridCell.Tab.0.center" timestamp="1602085202550">
+    <state width="1492" height="267" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602198534414" />
+    <state width="1492" height="267" key="GridCell.Tab.0.center" timestamp="1602198534414">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="176" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1602085202550" />
-    <state width="1492" height="176" key="GridCell.Tab.0.left" timestamp="1602085202550">
+    <state width="1492" height="267" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1602198534414" />
+    <state width="1492" height="267" key="GridCell.Tab.0.left" timestamp="1602198534414">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="176" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1602085202550" />
-    <state width="1492" height="176" key="GridCell.Tab.0.right" timestamp="1602085202550">
+    <state width="1492" height="267" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1602198534414" />
+    <state width="1492" height="267" key="GridCell.Tab.0.right" timestamp="1602198534414">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="176" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1602085202550" />
-    <state width="1492" height="267" key="GridCell.Tab.1.bottom" timestamp="1602083077375">
+    <state width="1492" height="267" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1602198534414" />
+    <state width="1492" height="267" key="GridCell.Tab.1.bottom" timestamp="1602198526441">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602083077375" />
-    <state width="1492" height="267" key="GridCell.Tab.1.center" timestamp="1602083077375">
+    <state width="1492" height="267" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602198526441" />
+    <state width="1492" height="267" key="GridCell.Tab.1.center" timestamp="1602198526441">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1602083077375" />
-    <state width="1492" height="267" key="GridCell.Tab.1.left" timestamp="1602083077375">
+    <state width="1492" height="267" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1602198526441" />
+    <state width="1492" height="267" key="GridCell.Tab.1.left" timestamp="1602198526441">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1602083077375" />
-    <state width="1492" height="267" key="GridCell.Tab.1.right" timestamp="1602083077375">
+    <state width="1492" height="267" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1602198526441" />
+    <state width="1492" height="267" key="GridCell.Tab.1.right" timestamp="1602198526441">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="267" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1602083077375" />
+    <state width="1492" height="267" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1602198526441" />
     <state width="623" height="498" key="SwitcherDM" timestamp="1600645514480">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -220,22 +224,27 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="219" y="97" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864" timestamp="1601297795546" />
-    <state x="-90" y="230" width="1032" height="544" key="dock-window-1" timestamp="1601305787193">
+    <state x="265" y="198" width="1153" height="528" key="dock-window-1" timestamp="1602166365197">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="-90" y="230" width="1032" height="544" key="dock-window-1/0.0.1536.864@0.0.1536.864" timestamp="1601305787193" />
-    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1600646131523">
+    <state x="265" y="198" width="1153" height="528" key="dock-window-1/0.0.1536.864@0.0.1536.864" timestamp="1602166365197" />
+    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1602191848840">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1600646131523" />
+    <state x="347" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1602191848840" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>
-          <line>104</line>
-          <option name="timeStamp" value="14" />
+          <line>210</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/test/methods_test.go</url>
+          <line>13</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

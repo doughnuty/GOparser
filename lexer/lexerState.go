@@ -26,6 +26,9 @@ func lexBegin(lexer *Lexer) lexState {
 		lexer.pos--
 		return lexIndent
 	}
+	if t == token.HASH {
+		return lexComment
+	}
 	return lexKey
 }
 
@@ -38,6 +41,31 @@ func (lexer *Lexer) error(format string) lexState {
 	return lexEOF
 }
 
+func lexComment(lexer *Lexer) lexState {
+	for {
+		if lexer.isEOF() {
+			lexer.ignore()
+			return lexEOF
+		}
+
+		if strings.HasPrefix(lexer.toEnd(), string(token.NL)) {
+			lexer.ignore()
+			return lexIndent
+		}
+
+		lexer.increment()
+	}
+}
+
+// Возможно стоит сделать так что бегин возвращает ТОЛЬКО индент
+// чтоб не дублировать один и тот же код для этих функций
+// Либо в целом отказаться от функции бегин чтоб не засорять
+// Начинать сразу с индента
+
+// Additionally, I can change it completely by creating one "factory" function
+// it will loop through input values deciding which lex function to run
+// This way, code will be easier to read (I guess)
+// Not so good idea tho
 func lexIndent(lexer *Lexer) lexState {
 	if lexer.isEOF() {
 		return lexEOF
@@ -51,31 +79,84 @@ func lexIndent(lexer *Lexer) lexState {
 		t = lexer.next()
 	}
 	lexer.pos--
+
 	if t == token.EOF {
 		return lexEOF
 	}
 
+	if t == token.HASH {
+		return lexComment
+	}
+
+	if (lexer.pos-lexer.start)%2 != 0 {
+		return lexer.error(errors.LEXER_BAD_INDENTATION)
+	}
 	lexer.putToken(token.TOKEN_SPACES)
 
 	if t == token.DASH {
-		return lexArray
+		return lexArrayDash
 	}
+
 	return lexKey
 }
 
-func lexArray(lexer *Lexer) lexState {
+func lexArrayDash(lexer *Lexer) lexState {
 	for {
 		if lexer.isEOF() {
-			lexer.putToken(token.TOKEN_DASH)
+			lexer.pos--
+			lexer.putToken(token.TOKEN_ARRAY)
 			return lexEOF
 		}
-		if rune(lexer.Input[lexer.pos]) == token.DASH {
-			lexer.pos++
+		if strings.HasPrefix(lexer.toEnd(), string(token.DASH)) {
+			lexer.increment()
 			lexer.ignore()
 		}
+
+		if strings.HasPrefix(lexer.toEnd(), string(token.HASH)) {
+			lexer.putToken(token.TOKEN_ARRAY)
+			return lexComment
+		}
+
 		if strings.HasPrefix(lexer.toEnd(), string(token.NL)) {
-			lexer.putToken(token.TOKEN_DASH)
+			lexer.putToken(token.TOKEN_ARRAY)
 			return lexIndent
+		}
+
+		lexer.increment()
+	}
+}
+
+func lexArrayBracket(lexer *Lexer) lexState {
+	for {
+		if lexer.isEOF() {
+			lexer.pos--
+			lexer.putToken(token.TOKEN_ARRAY)
+			return lexEOF
+		}
+
+		switch rune(lexer.Input[lexer.pos]) {
+		case token.LBRACKET:
+			lexer.increment()
+			lexer.ignore()
+		case token.COMMA:
+			lexer.putToken(token.TOKEN_ARRAY)
+			lexer.increment()
+			lexer.ignore()
+			return lexArrayBracket
+		case token.RBRACKET:
+			lexer.putToken(token.TOKEN_ARRAY)
+			lexer.pos++
+			if lexer.skipBlank() {
+				return lexEOF
+			} else if strings.HasPrefix(lexer.toEnd(), string(token.NL)) {
+				return lexIndent
+			} else if strings.HasPrefix(lexer.toEnd(), string(token.HASH)) {
+				return lexComment
+			} else {
+				return lexer.error(errors.LEXER_BAD_INDENTATION)
+			}
+		case token.NL:
+			return lexer.error(errors.LEXER_MISSING_BRACKET)
 		}
 
 		lexer.increment()
@@ -101,9 +182,15 @@ func lexColumn(lexer *Lexer) lexState {
 	lexer.pos += 1
 	lexer.putToken(token.TOKEN_COLON)
 
+	// skip blank function return whether the file ended
+	// true for EOF false for not EOF
 	if lexer.skipBlank() {
 		return lexer.error(errors.LEXER_ERROR_UNEXPECTED_EOF)
 	}
+	if strings.HasPrefix(lexer.toEnd(), string(token.LBRACKET)) {
+		return lexArrayBracket
+	}
+
 	if strings.HasPrefix(lexer.toEnd(), string(token.NL)) {
 		lexer.increment()
 		if lexer.isEOF() {
@@ -111,12 +198,17 @@ func lexColumn(lexer *Lexer) lexState {
 			return lexEOF
 		}
 		lexer.ignore()
-		return lexBegin
+		return lexIndent
 	}
 	return lexValue
 }
 
 func lexValue(lexer *Lexer) lexState {
+
+	if rune(lexer.Input[lexer.pos]) == token.DASH {
+		return lexer.error(errors.LEXER_BAD_INDENTATION)
+	}
+
 	for {
 		if lexer.isEOF() {
 			lexer.pos--
