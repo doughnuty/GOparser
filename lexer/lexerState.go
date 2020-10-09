@@ -1,8 +1,8 @@
 package lexer
 
 import (
-	"GOparser/errors"
-	"GOparser/token"
+	"github.com/doughnuty/GOparser/errors"
+	"github.com/doughnuty/GOparser/token"
 	"strings"
 	"unicode"
 )

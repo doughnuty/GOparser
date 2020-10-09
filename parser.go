@@ -1,9 +1,9 @@
 package GOparser
 
 import (
-	"GOparser/lexer"
-	"GOparser/token"
 	"errors"
+	"github.com/doughnuty/GOparser/lexer"
+	"github.com/doughnuty/GOparser/token"
 	"io/ioutil"
 	"strings"
 )

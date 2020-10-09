@@ -19,22 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab4cb059-08e1-4c83-92ff-a94b6dfd10c8" name="Default Changelist" comment="improved slice">
+    <list default="true" id="ab4cb059-08e1-4c83-92ff-a94b6dfd10c8" name="Default Changelist" comment="update">
       <change afterPath="$PROJECT_DIR$/lexer_no_chan/lexer.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lexer_no_chan/lexerState.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/theRealParser.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GOparser.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexer/lexer.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexer/lexer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexer/lexerState.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexer/lexerState.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/get.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/methods.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/property.go" beforeDir="false" afterPath="$PROJECT_DIR$/property.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/errors_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/errors_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/file.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/test/file.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/methods_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/methods_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/parsing_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/parsing_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +163,8 @@
     <MESSAGE value="Testing added" />
     <MESSAGE value="More arrays and comments" />
     <MESSAGE value="improved slice" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved slice" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="396" y="111" key="#Inspections" timestamp="1602244391509">
@@ -215,22 +203,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="550" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1601553344279" />
-    <state width="1492" height="176" key="GridCell.Tab.0.bottom" timestamp="1602246592414">
+    <state width="1492" height="176" key="GridCell.Tab.0.bottom" timestamp="1602247050764">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="176" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602246592414" />
-    <state width="1492" height="176" key="GridCell.Tab.0.center" timestamp="1602246592414">
+    <state width="1492" height="176" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602247050764" />
+    <state width="1492" height="176" key="GridCell.Tab.0.center" timestamp="1602247050764">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="176" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1602246592414" />
-    <state width="1492" height="176" key="GridCell.Tab.0.left" timestamp="1602246592414">
+    <state width="1492" height="176" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1602247050764" />
+    <state width="1492" height="176" key="GridCell.Tab.0.left" timestamp="1602247050764">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="176" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1602246592414" />
-    <state width="1492" height="176" key="GridCell.Tab.0.right" timestamp="1602246592414">
+    <state width="1492" height="176" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1602247050764" />
+    <state width="1492" height="176" key="GridCell.Tab.0.right" timestamp="1602247050764">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="176" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1602246592414" />
+    <state width="1492" height="176" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1602247050764" />
     <state width="1492" height="267" key="GridCell.Tab.1.bottom" timestamp="1602237624722">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -251,10 +239,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="623" height="498" key="SwitcherDM/0.0.1536.864@0.0.1536.864" timestamp="1600645514480" />
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1602228426047">
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1602247114123">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1602228426047" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1602247114123" />
     <state width="774" height="438" key="XDebugger.FullValuePopup" timestamp="1602082348044">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

@@ -1,7 +1,7 @@
 package lexer
 
 import (
-	"GOparser/token"
+	"github.com/doughnuty/GOparser/token"
 	"unicode"
 	"unicode/utf8"
 )
