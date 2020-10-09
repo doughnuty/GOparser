@@ -58,8 +58,8 @@ func (yaml *Yaml) recursiveParse(l *lexer.Lexer) error {
 func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 
 	keyVal := ""
-	elemSlice := 0
-	tempSlice := make([]string, 3, 5)
+	//elemSlice := 0
+	tempSlice := make([]string, 0, 10)
 
 	for {
 		l.Current = l.Adjacent
@@ -83,12 +83,12 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 			}
 
 		case token.TOKEN_ARRAY:
-			if elemSlice >= len(tempSlice) {
-				tempSlice = append(tempSlice, strings.TrimSpace(l.Current.Value))
+			tempSlice = append(tempSlice, strings.TrimSpace(l.Current.Value))
+			/*if elemSlice >= len(tempSlice) {
 			} else {
 				tempSlice[elemSlice] = strings.TrimSpace(l.Current.Value)
 				elemSlice++
-			}
+			}*/
 			if len(l.Adjacent.Value) <= yaml.Spacing || l.Adjacent.Mod == token.TOKEN_EOF {
 				(*yaml).Map[keyVal] = Property{
 					Mod: ARR_MOD,

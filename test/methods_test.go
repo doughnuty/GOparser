@@ -86,7 +86,7 @@ func TestCorrect(t *testing.T) {
 	tempSlc = yaml.Get("worker", "pets").StringSlice(nil)
 	if tempSlc != nil {
 		if tempSlc[0] != "dog" || tempSlc[1] != "cat" {
-			t.Errorf("Bad value.")
+			t.Errorf("Bad value. Temp slice is %v", tempSlc)
 		}
 	} else {
 		t.Errorf("Unseccessful parse")
