@@ -7,7 +7,7 @@ package main
 
 import (
 	"fmt"
-	"theRealParser/parser"
+	"github.com/doughnuty/GOparser"
 )
 
 func main() {
