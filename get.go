@@ -1,4 +1,4 @@
-package parser
+package GOparser
 
 func (yaml Yaml) Get(path ...string) Mod {
 	pEmpty := Property{

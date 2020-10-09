@@ -1,14 +1,14 @@
 package parser
 
 import (
+	"GOparser"
 	"reflect"
 	"testing"
-	"theRealParser/parser"
 	"time"
 )
 
 func TestCorrect(t *testing.T) {
-	yaml := parser.NewYaml()
+	yaml := GOparser.NewYaml()
 
 	err := yaml.Parse("file.yaml")
 	if err != nil {

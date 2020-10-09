@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/theRealParser.iml" filepath="$PROJECT_DIR$/.idea/theRealParser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/GOparser.iml" filepath="$PROJECT_DIR$/.idea/GOparser.iml" />
     </modules>
   </component>
 </project>

@@ -1,14 +1,13 @@
 package lexer
 
 import (
-	"theRealParser/token"
+	"GOparser/token"
 	"unicode"
 	"unicode/utf8"
 )
 
 type Lexer struct {
-	name   string
-	Input  string
+	input  string
 	tokens chan token.Token
 	state  lexState
 
@@ -16,8 +15,8 @@ type Lexer struct {
 	pos   int
 	width int
 
-	Adjacent token.Token
-	Current  token.Token
+	Following token.Token
+	Current   token.Token
 }
 
 func (lexer *Lexer) ignore() {
@@ -32,17 +31,17 @@ func (lexer *Lexer) increment() {
 // check if EOF
 func (lexer *Lexer) isEOF() bool {
 	//fmt.Println(lexer.input)
-	return lexer.pos >= len(lexer.Input)
+	return lexer.pos >= len(lexer.input)
 }
 
 // advances to the next position
 func (lexer *Lexer) next() rune {
-	if lexer.pos >= utf8.RuneCountInString(lexer.Input) {
+	if lexer.pos >= utf8.RuneCountInString(lexer.input) {
 		lexer.width = 0
 		return token.EOF
 	}
 
-	result, width := utf8.DecodeRuneInString(lexer.Input[lexer.pos:])
+	result, width := utf8.DecodeRuneInString(lexer.input[lexer.pos:])
 
 	lexer.width = width
 	lexer.pos += lexer.width
@@ -68,7 +67,7 @@ func (lexer *Lexer) NextToken() token.Token {
 
 // put token into token channel
 func (lexer *Lexer) putToken(tokenMod token.TokenMod) {
-	lexer.tokens <- token.Token{Mod: tokenMod, Value: lexer.Input[lexer.start:lexer.pos]}
+	lexer.tokens <- token.Token{Mod: tokenMod, Value: lexer.input[lexer.start:lexer.pos]}
 	lexer.start = lexer.pos
 }
 
@@ -111,5 +110,5 @@ func (lexer *Lexer) skipLine() {
 }
 
 func (lexer *Lexer) toEnd() string {
-	return lexer.Input[lexer.pos:]
+	return lexer.input[lexer.pos:]
 }

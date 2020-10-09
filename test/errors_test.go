@@ -1,14 +1,14 @@
 package parser
 
 import (
+	"GOparser"
 	"reflect"
 	"testing"
-	"theRealParser/parser"
 	"time"
 )
 
 func TestErrors(t *testing.T) {
-	yaml := parser.NewYaml()
+	yaml := GOparser.NewYaml()
 
 	err := yaml.Parse("file.yaml")
 	if err != nil {
@@ -20,8 +20,8 @@ func TestErrors(t *testing.T) {
 	if reflect.TypeOf(tempBool) != reflect.TypeOf(false) {
 		t.Errorf("Conflicting types. Expected %s found %v", "bool", reflect.TypeOf(tempBool))
 	}
-	if tempBool != true {
-		t.Errorf("Bad value. Expected %s found %v", "true", tempBool)
+	if tempBool != false {
+		t.Errorf("Bad value. Expected %s found %v", "false", tempBool)
 	}
 
 	//Int(def int) int
@@ -29,8 +29,8 @@ func TestErrors(t *testing.T) {
 	if reflect.TypeOf(tempInt) != reflect.TypeOf(1) {
 		t.Errorf("Conflicting types. Expected %s found %v", "int", reflect.TypeOf(tempInt))
 	}
-	if tempInt != 654321 {
-		t.Errorf("Bad value. Expected %s found %v", "654321", tempInt)
+	if tempInt != 0 {
+		t.Errorf("Bad value. Expected %s found %v", "0", tempInt)
 	}
 
 	//String(def string) string
@@ -38,8 +38,8 @@ func TestErrors(t *testing.T) {
 	if reflect.TypeOf(tempStr) != reflect.TypeOf("Name") {
 		t.Errorf("Conflicting types. Expected %s found %v", "string", reflect.TypeOf(tempStr))
 	}
-	if tempStr != "A" {
-		t.Errorf("Bad value. Expected %s found %v", "A", tempStr)
+	if tempStr != "Name" {
+		t.Errorf("Bad value. Expected %s found %v", "Name", tempStr)
 	}
 
 	//Float64(def float64) float64
@@ -47,8 +47,8 @@ func TestErrors(t *testing.T) {
 	if reflect.TypeOf(tempFlt) != reflect.TypeOf(0.0) {
 		t.Errorf("Conflicting types. Expected %s found %v", "float64", reflect.TypeOf(tempFlt))
 	}
-	if tempFlt != 103.6 {
-		t.Errorf("Bad value. Expected %s found %v", "103.6", tempFlt)
+	if tempFlt != 0.0 {
+		t.Errorf("Bad value. Expected %s found %v", "0.0", tempFlt)
 	}
 
 	//Duration(def time.Duration) time.Duration
@@ -57,8 +57,8 @@ func TestErrors(t *testing.T) {
 	if reflect.TypeOf(tempDur) != reflect.TypeOf(testDur) {
 		t.Errorf("Conflicting types. Expected %s found %v", "duration", reflect.TypeOf(tempDur))
 	}
-	if tempDur == testDur {
-		t.Errorf("Bad value. Expected %s found %v", "1h2m3s", tempDur)
+	if tempDur != testDur {
+		t.Errorf("Bad value. Expected %v found %v", testDur, tempDur)
 	}
 
 	//StringSlice(def []string) []string
@@ -70,38 +70,22 @@ func TestErrors(t *testing.T) {
 	if reflect.TypeOf(tempSlc) != reflect.TypeOf(testSlc) {
 		t.Errorf("Conflicting types. Expected %s found %v", "string slice", reflect.TypeOf(tempSlc))
 	}
-	if tempSlc == nil {
-		t.Errorf("Unseccessful parse")
-	}
-	for i := range tempSlc {
-		if len(testSlc) < len(tempSlc) {
-			t.Errorf("Bad value. Expected %s found %v", "", tempSlc)
-		}
-		if tempSlc[i] != testSlc[i] {
-			t.Errorf("Bad value. Expected %s found %v", testSlc[i], tempSlc[i])
-		}
+	if tempSlc != nil {
+		t.Errorf("Successful parse of erroneous path")
 	}
 
 	//StringMap(def map[string]string) map[string]string
 	testMap := make(map[string]string, 2)
 	testMap["ID"] = "123456"
 	testMap["Name"] = "B"
-	tempMap := yaml.Get("worker", "stats").StringMap(nil)
+	tempMap := yaml.Get("worker").StringMap(nil)
 	if reflect.TypeOf(tempMap) != reflect.TypeOf(testMap) {
 		t.Errorf("Conflicting types. Expected %s found %v", "map", reflect.TypeOf(tempMap))
 	}
-	if tempMap == nil {
-		t.Errorf("Unseccessful parse")
+	if tempMap != nil {
+		t.Errorf("Successful parse of erroneous path")
 
-		t.Errorf("Parsed as %v", yaml.Get("worker", "stats"))
-	}
-	for i := range tempMap {
-		if len(testMap) < len(tempMap) {
-			t.Errorf("Bad value. Expected %s found %v", testMap[i], tempMap)
-		}
-		if tempMap[i] != testMap[i] {
-			t.Errorf("Bad value. Expected %s found %v", testMap[i], tempMap[i])
-		}
+		t.Errorf("Parsed as %v", yaml.Get("worker"))
 	}
 
 	//Bytes() []byte

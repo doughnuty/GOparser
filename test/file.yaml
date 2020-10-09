@@ -22,7 +22,7 @@ worker:
     ID: 123456
     Name: B
 
-  pets: [dog, cat, bird, snake,] # glad it works
+  pets: [dog, cat, bird, snake] # glad it works
 
   stats:
     canVote: True

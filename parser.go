@@ -1,11 +1,11 @@
-package parser
+package GOparser
 
 import (
+	"GOparser/lexer"
+	"GOparser/token"
 	"errors"
 	"io/ioutil"
 	"strings"
-	"theRealParser/lexer"
-	"theRealParser/token"
 )
 
 // true - is ok
@@ -30,8 +30,8 @@ func (yaml *Yaml) Parse(filename string) error {
 
 	str := string(buf)
 
-	l := lexer.LexStart(filename, str)
-	l.Adjacent = l.NextToken()
+	l := lexer.LexStart(str)
+	l.Following = l.NextToken()
 
 	err = yaml.parseTokens(l)
 	if err != nil {
@@ -58,12 +58,11 @@ func (yaml *Yaml) recursiveParse(l *lexer.Lexer) error {
 func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 
 	keyVal := ""
-	//elemSlice := 0
 	tempSlice := make([]string, 0, 10)
 
 	for {
-		l.Current = l.Adjacent
-		l.Adjacent = l.NextToken()
+		l.Current = l.Following
+		l.Following = l.NextToken()
 
 		switch l.Current.Mod {
 		case token.TOKEN_ERROR:
@@ -78,25 +77,20 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 				Val: strings.TrimSpace(l.Current.Value),
 			}
 			keyVal = ""
-			if len(l.Adjacent.Value) < yaml.Spacing || l.Adjacent.Mod == token.TOKEN_EOF {
+			if len(l.Following.Value) < yaml.Spacing || l.Following.Mod == token.TOKEN_EOF {
 				return nil
 			}
 
 		case token.TOKEN_ARRAY:
 			tempSlice = append(tempSlice, strings.TrimSpace(l.Current.Value))
-			/*if elemSlice >= len(tempSlice) {
-			} else {
-				tempSlice[elemSlice] = strings.TrimSpace(l.Current.Value)
-				elemSlice++
-			}*/
-			if len(l.Adjacent.Value) <= yaml.Spacing || l.Adjacent.Mod == token.TOKEN_EOF {
+			if len(l.Following.Value) <= yaml.Spacing || l.Following.Mod == token.TOKEN_EOF {
 				(*yaml).Map[keyVal] = Property{
 					Mod: ARR_MOD,
 					Val: tempSlice,
 				}
 			}
 		case token.TOKEN_COLON:
-			if l.Adjacent.Mod == token.TOKEN_SPACES && !yaml.checkIndentSpaces(l.Adjacent.Value) {
+			if l.Following.Mod == token.TOKEN_SPACES && !yaml.checkIndentSpaces(l.Following.Value) {
 				// if colon followed by spaces and indentation is not proper report
 				return errors.New("expected value found new line")
 			}
@@ -110,7 +104,7 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 				return nil
 			}
 			// if more spaces and key create map
-			if l.Adjacent.Mod == token.TOKEN_KEY {
+			if l.Following.Mod == token.TOKEN_KEY {
 				if yaml.checkIndentSpaces(l.Current.Value) && keyVal != "" {
 					var newYaml Yaml
 					err := newYaml.recursiveParse(l)
@@ -124,7 +118,7 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 					//yaml.Spacing = spaceNum
 					if l.Current.Mod == token.TOKEN_SPACES && len(l.Current.Value) < yaml.Spacing {
 						return nil
-					} else if l.Adjacent.Mod == token.TOKEN_SPACES && len(l.Adjacent.Value) < yaml.Spacing {
+					} else if l.Following.Mod == token.TOKEN_SPACES && len(l.Following.Value) < yaml.Spacing {
 						return nil
 					}
 				}
@@ -134,5 +128,6 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 		case token.TOKEN_EOF:
 			return nil
 		}
+		//
 	}
 }

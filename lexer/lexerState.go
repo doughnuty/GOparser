@@ -1,18 +1,17 @@
 package lexer
 
 import (
+	"GOparser/errors"
+	"GOparser/token"
 	"strings"
-	"theRealParser/errors"
-	"theRealParser/token"
 	"unicode"
 )
 
 type lexState func(*Lexer) lexState
 
-func LexStart(name, input string) *Lexer {
+func LexStart(input string) *Lexer {
 	lexer := &Lexer{
-		name:   name,
-		Input:  input,
+		input:  input,
 		state:  lexBegin,
 		tokens: make(chan token.Token, 3),
 	}
@@ -21,7 +20,7 @@ func LexStart(name, input string) *Lexer {
 }
 
 func lexBegin(lexer *Lexer) lexState {
-	t := rune(lexer.Input[lexer.pos])
+	t := rune(lexer.input[lexer.pos])
 	if unicode.IsSpace(t) {
 		lexer.pos--
 		return lexIndent
@@ -71,7 +70,7 @@ func lexIndent(lexer *Lexer) lexState {
 		return lexEOF
 	}
 
-	t := rune(lexer.Input[lexer.pos])
+	t := rune(lexer.input[lexer.pos])
 	for unicode.IsSpace(t) {
 		if t != token.SPACE {
 			lexer.ignore()
@@ -134,7 +133,7 @@ func lexArrayBracket(lexer *Lexer) lexState {
 			return lexEOF
 		}
 
-		switch rune(lexer.Input[lexer.pos]) {
+		switch rune(lexer.input[lexer.pos]) {
 		case token.LBRACKET:
 			lexer.increment()
 			lexer.ignore()
@@ -166,6 +165,10 @@ func lexArrayBracket(lexer *Lexer) lexState {
 func lexKey(lexer *Lexer) lexState {
 	for {
 		if lexer.isEOF() {
+			return lexer.error(errors.LEXER_ERROR_MISSING_COLON)
+		}
+
+		if strings.HasPrefix(lexer.toEnd(), string(token.NL)) {
 			return lexer.error(errors.LEXER_ERROR_MISSING_COLON)
 		}
 
@@ -205,7 +208,7 @@ func lexColumn(lexer *Lexer) lexState {
 
 func lexValue(lexer *Lexer) lexState {
 
-	if rune(lexer.Input[lexer.pos]) == token.DASH {
+	if rune(lexer.input[lexer.pos]) == token.DASH {
 		return lexer.error(errors.LEXER_BAD_INDENTATION)
 	}
 

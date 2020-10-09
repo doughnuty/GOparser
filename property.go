@@ -1,4 +1,4 @@
-package parser
+package GOparser
 
 type Yaml struct {
 	Map     map[string]Property
