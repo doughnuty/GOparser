@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"GOparser"
+	"github.com/doughnuty/GOparser"
 	"testing"
 )
 
