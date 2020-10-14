@@ -34,6 +34,15 @@ func (lexer *Lexer) isEOF() bool {
 	return lexer.pos >= len(lexer.input)
 }
 
+func (lexer *Lexer) cur() rune {
+	if lexer.pos >= utf8.RuneCountInString(lexer.input) {
+		lexer.width = 0
+		return token.EOF
+	}
+	result, _ := utf8.DecodeRuneInString(lexer.input[lexer.pos:])
+	return result
+}
+
 // advances to the next position
 func (lexer *Lexer) next() rune {
 	if lexer.pos >= utf8.RuneCountInString(lexer.input) {
@@ -74,21 +83,21 @@ func (lexer *Lexer) putToken(tokenMod token.TokenMod) {
 // skip spaces until something meaningful or a new line appears
 func (lexer *Lexer) skipBlank() (isEOF bool) {
 	for {
-		ch := lexer.next()
+		ch := lexer.cur()
 
 		if ch == token.EOF {
-			//lexer.putToken(token.TOKEN_EOF)
 			isEOF = true
 			break
 		}
 
 		if ch == token.NL || !unicode.IsSpace(ch) {
-			lexer.pos--
+			//lexer.pos--
 			lexer.ignore()
 			isEOF = false
 			break
 		}
 
+		lexer.increment()
 	}
 	return
 }

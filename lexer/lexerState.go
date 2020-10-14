@@ -1,6 +1,7 @@
 package lexer
 
 import (
+	"fmt"
 	"github.com/doughnuty/GOparser/errors"
 	"github.com/doughnuty/GOparser/token"
 	"strings"
@@ -70,15 +71,16 @@ func lexIndent(lexer *Lexer) lexState {
 		return lexEOF
 	}
 
-	t := rune(lexer.input[lexer.pos])
+	t := lexer.next()
 	for unicode.IsSpace(t) {
 		if t != token.SPACE {
 			lexer.ignore()
 		}
 		t = lexer.next()
 	}
+	//fmt.Println(string(lexer.input[lexer.pos]), lexer.pos)
 	lexer.pos--
-
+	//fmt.Println(string(lexer.input[lexer.pos]), lexer.pos)
 	if t == token.EOF {
 		return lexEOF
 	}
@@ -91,6 +93,7 @@ func lexIndent(lexer *Lexer) lexState {
 		return lexer.error(errors.LEXER_BAD_INDENTATION)
 	}
 	lexer.putToken(token.TOKEN_SPACES)
+	//	lexer.increment()
 
 	if t == token.DASH {
 		return lexArrayDash
@@ -169,6 +172,7 @@ func lexKey(lexer *Lexer) lexState {
 		}
 
 		if strings.HasPrefix(lexer.toEnd(), string(token.NL)) {
+			fmt.Println(lexer.input[lexer.pos-2])
 			return lexer.error(errors.LEXER_ERROR_MISSING_COLON)
 		}
 
@@ -219,10 +223,17 @@ func lexValue(lexer *Lexer) lexState {
 			return lexEOF
 		}
 
-		if unicode.IsSpace(lexer.next()) {
-			lexer.pos--
+		if strings.HasPrefix(lexer.toEnd(), string(token.HASH)) {
 			lexer.putToken(token.TOKEN_VALUE)
-			lexer.skipBlank()
+
+			return lexComment
+		}
+
+		if strings.HasPrefix(lexer.toEnd(), string(token.NL)) {
+			lexer.putToken(token.TOKEN_VALUE)
+			if lexer.skipBlank() {
+				return lexEOF
+			}
 
 			return lexIndent
 		}
