@@ -40,26 +40,15 @@ func (yaml *Yaml) Parse(filename string) error {
 	return err
 }
 
-func (yaml *Yaml) recursiveParse(l *lexer.Lexer) error {
-	// create new yaml
-	*yaml = NewYaml()
-	yaml.Spacing = len(l.Current.Value)
-	// write number of spaces and parse
-	// yaml.Spacing = countSpaces(l.adjacent.value)
-	err := yaml.parseTokens(l)
-	if err != nil {
-		return err
-	}
-
-	// assign new yaml to the Property
-	return nil
+func pop(yamlSlice []Yaml) (Yaml, []Yaml) {
+	return yamlSlice[len(yamlSlice)-1], yamlSlice[:len(yamlSlice)-1]
 }
 
 func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 
 	keyVal := ""
 	tempSlice := make([]string, 0, 10)
-
+	yamlSlice := make([]Yaml, 0, 10)
 	for {
 		l.Current = l.Following
 		l.Following = l.NextToken()
@@ -78,7 +67,8 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 			}
 			keyVal = ""
 			if len(l.Following.Value) < yaml.Spacing || l.Following.Mod == token.TOKEN_EOF {
-				return nil
+				// pop yaml
+				*yaml, yamlSlice = pop(yamlSlice)
 			}
 
 		case token.TOKEN_ARRAY:
@@ -88,6 +78,8 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 					Mod: ARR_MOD,
 					Val: tempSlice,
 				}
+				tempSlice = make([]string, 0, 10)
+				*yaml, yamlSlice = pop(yamlSlice)
 			}
 		case token.TOKEN_COLON:
 			if l.Following.Mod == token.TOKEN_SPACES && !yaml.checkIndentSpaces(l.Following.Value) {
@@ -98,36 +90,28 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 		case token.TOKEN_SPACES:
 			spaceNum := len(l.Current.Value)
 
-			// if less spaces return
+			// if less spaces pop
 			if spaceNum < yaml.Spacing {
-				//yaml.Spacing = countSpaces(token.value)
-				return nil
+				*yaml, yamlSlice = pop(yamlSlice)
 			}
 			// if more spaces and key create map
 			if l.Following.Mod == token.TOKEN_KEY {
 				if yaml.checkIndentSpaces(l.Current.Value) && keyVal != "" {
-					var newYaml Yaml
-					err := newYaml.recursiveParse(l)
-					if err != nil {
-						return err
-					}
-					(*yaml).Map[keyVal] = Property{
+					oldYaml := *yaml
+					yamlSlice = append(yamlSlice, oldYaml)
+					newYaml := NewYaml()
+					newYaml.Spacing = len(l.Current.Value)
+					*yaml = newYaml
+					oldYaml.Map[keyVal] = Property{
 						Mod: MAP_MOD,
-						Val: newYaml,
+						Val: *yaml,
 					}
-					//yaml.Spacing = spaceNum
-					if l.Current.Mod == token.TOKEN_SPACES && len(l.Current.Value) < yaml.Spacing {
-						return nil
-					} else if l.Following.Mod == token.TOKEN_SPACES && len(l.Following.Value) < yaml.Spacing {
-						return nil
-					}
+					keyVal = ""
 				}
-
 			}
 
 		case token.TOKEN_EOF:
 			return nil
 		}
-		//
 	}
 }

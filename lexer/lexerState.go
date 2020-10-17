@@ -238,6 +238,10 @@ func lexValue(lexer *Lexer) lexState {
 			return lexIndent
 		}
 
+		if strings.HasPrefix(lexer.toEnd(), string(token.COLON)) {
+			return lexer.error(errors.LEXER_BAD_INDENTATION)
+		}
+
 		lexer.increment()
 	}
 }
