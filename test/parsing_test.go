@@ -8,7 +8,7 @@ import (
 func TestParse(t *testing.T) {
 	yaml := GOparser.NewYaml()
 
-	err := yaml.Parse("file.yaml")
+	err := yaml.ParseFiles("file.yaml")
 	if err != nil {
 		t.Errorf("Bad parsing. Error message is: %v", err)
 	}

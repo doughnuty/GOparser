@@ -8,6 +8,10 @@ import (
 	"strings"
 )
 
+func pop(yamlSlice []Yaml) (Yaml, []Yaml) {
+	return yamlSlice[len(yamlSlice)-1], yamlSlice[:len(yamlSlice)-1]
+}
+
 // true - is ok
 // false - not ok
 func (yaml *Yaml) checkIndentSpaces(spaces string) bool {
@@ -16,11 +20,7 @@ func (yaml *Yaml) checkIndentSpaces(spaces string) bool {
 		valLen%2 == 0
 }
 
-func NewYaml() Yaml {
-	return Yaml{Map: make(map[string]Property), Spacing: 0}
-}
-
-func (yaml *Yaml) Parse(filename string) error {
+func (yaml *Yaml) ParseFiles(filename string) error {
 
 	buf, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -38,10 +38,6 @@ func (yaml *Yaml) Parse(filename string) error {
 		return err
 	}
 	return err
-}
-
-func pop(yamlSlice []Yaml) (Yaml, []Yaml) {
-	return yamlSlice[len(yamlSlice)-1], yamlSlice[:len(yamlSlice)-1]
 }
 
 func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
@@ -62,7 +58,7 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 
 		case token.TOKEN_VALUE:
 			(*yaml).Map[keyVal] = Property{
-				Mod: "value",
+				Mod: VAL_MOD,
 				Val: strings.TrimSpace(l.Current.Value),
 			}
 			keyVal = ""
