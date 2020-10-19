@@ -9,7 +9,7 @@ import (
 // Parse given environmental variables and save to the structure
 func (yaml *Yaml) ParseEnv(env ...string) error {
 	var err error = nil
-	errstr := "no value for key"
+	errstr := "no value for the key"
 	for _, key := range env {
 		val, ok := os.LookupEnv(key)
 		if ok {
