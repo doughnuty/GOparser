@@ -2,7 +2,7 @@ package GOparser
 
 import (
 	"errors"
-	"github.com/doughnuty/GOparser/lexer"
+	lexer "github.com/doughnuty/GOparser/lexer_no_chan"
 	"github.com/doughnuty/GOparser/token"
 	"io/ioutil"
 	"strings"
