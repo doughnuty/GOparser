@@ -40,6 +40,57 @@ func (yaml *Yaml) ParseFiles(filename string) error {
 	return err
 }
 
+func newString(value string) (string, error) {
+	runVal := []rune(value)
+	if len(runVal) == 0 {
+		return value, nil
+	}
+	newVal := make([]rune, len(value))
+	j := 0
+	isEscape := false
+	if runVal[0] == '"' {
+		for i, c := range value {
+			if isEscape {
+				switch c {
+				case 't':
+					c = '\t'
+				case 'b':
+					c = '\b'
+				case 'n':
+					c = '\n'
+				case 'r':
+					c = '\r'
+				case 'f':
+					c = '\f'
+				case '"':
+					c = '"'
+				case '\\':
+					c = '\\'
+				default:
+					return value, errors.New("unknown escape")
+				}
+				isEscape = false
+			} else if c == '\\' {
+				isEscape = true
+				continue
+			} else if c == '"' {
+				if i == len(value)-1 {
+					return string(newVal), nil
+				} else if i == 0 {
+					continue
+				} else {
+					return value, errors.New("unexpected characters after quote")
+				}
+			}
+
+			newVal[j] = c
+			j++
+		}
+		return value, errors.New("missing quote at the end of string")
+	}
+	return value, nil
+}
+
 func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 
 	keyVal := ""
@@ -57,9 +108,13 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 			keyVal = strings.TrimSpace(l.Current.Value)
 
 		case token.TOKEN_VALUE:
+			value, err := newString(strings.TrimSpace(l.Current.Value))
+			if err != nil {
+				return err
+			}
 			(*yaml).Map[keyVal] = Property{
 				Mod: VAL_MOD,
-				Val: strings.TrimSpace(l.Current.Value),
+				Val: value,
 			}
 			keyVal = ""
 			if len(l.Following.Value) < yaml.Spacing || l.Following.Mod == token.TOKEN_EOF {
@@ -68,7 +123,11 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 			}
 
 		case token.TOKEN_ARRAY:
-			tempSlice = append(tempSlice, strings.TrimSpace(l.Current.Value))
+			value, err := newString(strings.TrimSpace(l.Current.Value))
+			if err != nil {
+				return err
+			}
+			tempSlice = append(tempSlice, value)
 			if len(l.Following.Value) <= yaml.Spacing || l.Following.Mod == token.TOKEN_EOF {
 				(*yaml).Map[keyVal] = Property{
 					Mod: ARR_MOD,

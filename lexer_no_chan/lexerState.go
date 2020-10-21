@@ -123,7 +123,7 @@ func lexArrayBracket(lexer *Lexer) token.Token {
 			result := lexer.putToken(token.TOKEN_ARRAY)
 			lexer.increment()
 			lexer.ignore()
-			lexer.state = lexArrayBracket
+			lexer.changeState(lexArrayBracket)
 			return result
 		case token.RBRACKET:
 			result := lexer.putToken(token.TOKEN_ARRAY)
@@ -140,6 +140,8 @@ func lexArrayBracket(lexer *Lexer) token.Token {
 			}
 			return result
 		case token.NL:
+			return lexer.error(errors.LEXER_MISSING_BRACKET)
+		case token.HASH:
 			return lexer.error(errors.LEXER_MISSING_BRACKET)
 		}
 
