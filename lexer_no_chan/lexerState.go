@@ -115,7 +115,7 @@ func lexArrayBracket(lexer *Lexer) token.Token {
 			return lexer.putToken(token.TOKEN_ARRAY)
 		}
 
-		switch rune(lexer.input[lexer.pos]) {
+		switch lexer.cur() {
 		case token.LBRACKET:
 			lexer.increment()
 			lexer.ignore()
@@ -197,7 +197,7 @@ func lexColumn(lexer *Lexer) token.Token {
 
 func lexValue(lexer *Lexer) token.Token {
 	var result token.Token
-	if rune(lexer.input[lexer.pos]) == token.DASH {
+	if rune(lexer.cur()) == token.DASH {
 		return lexer.error(errors.LEXER_BAD_INDENTATION)
 	}
 

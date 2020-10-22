@@ -75,6 +75,7 @@ func newString(value string) (string, error) {
 				continue
 			} else if c == '"' {
 				if i == len(value)-1 {
+					newVal = newVal[:j]
 					return string(newVal), nil
 				} else if i == 0 {
 					continue

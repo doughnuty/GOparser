@@ -13,8 +13,8 @@ type Property struct {
 type PropertyMod int
 
 const (
-	VAL_MOD PropertyMod = iota
+	EMPTY_MOD PropertyMod = iota
+	VAL_MOD
 	MAP_MOD
 	ARR_MOD
-	EMPTY_MOD
 )

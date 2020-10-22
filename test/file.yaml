@@ -2,7 +2,7 @@
 student:
   personal:
     ID: 654321
-    Name: M A
+    Name: "M A"
     HeightHistory: 103.6
     HoursActive: 1h2m3s # you know its comment right?
 
