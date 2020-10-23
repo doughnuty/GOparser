@@ -96,7 +96,7 @@ func (prop Property) StringMap(def map[string]string) map[string]string {
 	if prop.Mod != MAP_MOD {
 		return def
 	}
-	ret := make(map[string]string, 10)
+	ret := make(map[string]string, 10) // edit to handle more data
 	for i, j := range prop.Val.(Yaml).Map {
 		if j.Mod != VAL_MOD {
 			return def

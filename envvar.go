@@ -119,10 +119,17 @@ func getValFromEnv(env string) ([]string, string) {
 }
 
 func (yaml *Yaml) FillYaml(keys []string, val string) error {
-	newYaml := NewYaml()
+	//slc := make([]Yaml, 0, 10)
 
 	for i, key := range keys {
-		if yaml.Map[key].Mod == EMPTY_MOD && i != len(keys)-1 {
+		var newYaml Yaml
+
+		if yaml.Map[key].Mod != MAP_MOD && i != len(keys)-1 { // which one - empty or map? what to do if
+			// if there's two envs A_B = X && A = X ?
+			newYaml = NewYaml()
+			if newYaml.Map == nil {
+				return errors.New("error initializing new yaml")
+			}
 			yaml.Map[key] = Property{
 				Mod: MAP_MOD,
 				Val: newYaml,
@@ -132,13 +139,23 @@ func (yaml *Yaml) FillYaml(keys []string, val string) error {
 				return errors.New("reassignment of a value is prohibited")
 			}
 
+			if yaml.Map == nil {
+				return errors.New("assignment to a nil map is prohibited")
+			}
+
 			yaml.Map[key] = Property{
 				Mod: VAL_MOD,
 				Val: val,
 			}
+			return nil
 
 		} else if yaml.Map[key].Mod == MAP_MOD {
 			newYaml = yaml.Map[key].Val.(Yaml)
+
+			yaml.Map[key] = Property{
+				Mod: MAP_MOD,
+				Val: newYaml,
+			}
 		}
 
 		yaml = &newYaml
