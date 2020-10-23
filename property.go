@@ -6,12 +6,15 @@ type Yaml struct {
 }
 
 type Property struct {
-	Mod string
+	Mod PropertyMod
 	Val interface{}
 }
 
+type PropertyMod int
+
 const (
-	VAL_MOD string = "value"
-	MAP_MOD string = "map"
-	ARR_MOD string = "array"
+	EMPTY_MOD PropertyMod = iota
+	VAL_MOD
+	MAP_MOD
+	ARR_MOD
 )

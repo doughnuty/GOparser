@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -19,18 +22,31 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458dc10-988a-4224-a0aa-159e93c3b8d8" name="Default Changelist" comment="refactor complete">
+    <list default="true" id="c458dc10-988a-4224-a0aa-159e93c3b8d8" name="Default Changelist" comment="w/ prefix &amp; stripped. runtime error">
+      <change afterPath="$PROJECT_DIR$/test/envs_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexer/lexer.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexer/lexer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexer/lexerState.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexer/lexerState.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/envvar.go" beforeDir="false" afterPath="$PROJECT_DIR$/envvar.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/methods.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="nonRecursive" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GoLibraries">
@@ -42,16 +58,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../GOparser" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager" selected="Go Test.go test github.com/doughnuty/GOparser/test">
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
@@ -110,7 +128,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor complete" />
+    <MESSAGE value="more concise" />
+    <MESSAGE value="Environment vars support" />
+    <MESSAGE value="edited smth" />
+    <MESSAGE value="improved state (with chan) added no chan lexer" />
+    <MESSAGE value="added quote" />
+    <MESSAGE value="w/ prefix &amp; stripped" />
+    <MESSAGE value="w/ prefix &amp; stripped. runtime error" />
+    <option name="LAST_COMMIT_MESSAGE" value="w/ prefix &amp; stripped. runtime error" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -120,89 +145,113 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="225" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1602674031417" />
-    <state width="1492" height="268" key="GridCell.Tab.0.bottom" timestamp="1602681473732">
+    <state x="94" y="94" width="1349" height="677" key="DiffContextDialog" timestamp="1603279839375">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602681473732" />
-    <state width="1492" height="268" key="GridCell.Tab.0.center" timestamp="1602681473731">
+    <state x="94" y="94" width="1349" height="677" key="DiffContextDialog/0.0.1536.864@0.0.1536.864" timestamp="1603279839375" />
+    <state x="550" y="188" key="FileChooserDialogImpl" timestamp="1603098160323">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1602681473731" />
-    <state width="1492" height="268" key="GridCell.Tab.0.left" timestamp="1602681473731">
+    <state x="550" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1603098160323" />
+    <state width="1492" height="268" key="GridCell.Tab.0.bottom" timestamp="1603457447442">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1602681473731" />
-    <state width="1492" height="268" key="GridCell.Tab.0.right" timestamp="1602681473731">
+    <state width="1492" height="268" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603457447442" />
+    <state width="1492" height="268" key="GridCell.Tab.0.center" timestamp="1603457447441">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1602681473731" />
-    <state width="1492" height="268" key="GridCell.Tab.1.bottom" timestamp="1602681468289">
+    <state width="1492" height="268" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1603457447441" />
+    <state width="1492" height="268" key="GridCell.Tab.0.left" timestamp="1603457447441">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1602681468289" />
-    <state width="1492" height="268" key="GridCell.Tab.1.center" timestamp="1602681468288">
+    <state width="1492" height="268" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1603457447441" />
+    <state width="1492" height="268" key="GridCell.Tab.0.right" timestamp="1603457447441">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1602681468288" />
-    <state width="1492" height="268" key="GridCell.Tab.1.left" timestamp="1602681468288">
+    <state width="1492" height="268" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1603457447441" />
+    <state width="1492" height="268" key="GridCell.Tab.1.bottom" timestamp="1603457447442">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1602681468288" />
-    <state width="1492" height="268" key="GridCell.Tab.1.right" timestamp="1602681468288">
+    <state width="1492" height="268" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603457447442" />
+    <state width="1492" height="268" key="GridCell.Tab.1.center" timestamp="1603457447442">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1602681468288" />
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1602674150302">
+    <state width="1492" height="268" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1603457447442" />
+    <state width="1492" height="268" key="GridCell.Tab.1.left" timestamp="1603457447442">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1602674150302" />
-    <state x="322" y="162" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1602681280757">
+    <state width="1492" height="268" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1603457447442" />
+    <state width="1492" height="268" key="GridCell.Tab.1.right" timestamp="1603457447442">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="322" y="162" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864" timestamp="1602681280757" />
+    <state width="1492" height="268" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1603457447442" />
+    <state x="279" y="78" key="SettingsEditor" timestamp="1603097942411">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="279" y="78" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1603097942411" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1603386827536">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1603386827536" />
+    <state x="94" y="94" width="1349" height="677" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1603098161925">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="94" y="94" width="1349" height="677" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.864@0.0.1536.864" timestamp="1603098161925" />
+    <state x="588" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603378782906">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="588" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1603378782906" />
+    <state x="322" y="162" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1602683023102">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="322" y="162" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864" timestamp="1602683023102" />
+    <state x="431" y="182" width="672" height="678" key="search.everywhere.popup" timestamp="1603455362624">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="431" y="182" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1603455362624" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>
-          <line>91</line>
+          <line>90</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>
-          <line>74</line>
+          <line>73</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>
-          <line>80</line>
+          <line>79</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>
-          <line>78</line>
+          <line>77</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>
-          <line>75</line>
+          <line>74</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/test/parsing_test.go</url>
-          <line>11</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/envvar.go</url>
+          <line>142</line>
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
-        <line-breakpoint type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>
-          <line>175</line>
-          <option name="timeStamp" value="17" />
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/methods.go</url>
+          <line>96</line>
+          <option name="timeStamp" value="69" />
         </line-breakpoint>
-        <line-breakpoint type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>
-          <line>179</line>
-          <option name="timeStamp" value="18" />
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/methods.go</url>
+          <line>101</line>
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
