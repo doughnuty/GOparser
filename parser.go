@@ -147,7 +147,7 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 			spaceNum := len(l.Current.Value)
 
 			// if less spaces pop
-			if spaceNum < yaml.Spacing {
+			for spaceNum < yaml.Spacing {
 				*yaml, yamlSlice = pop(yamlSlice)
 			}
 			// if more spaces and key create map
