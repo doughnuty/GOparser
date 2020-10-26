@@ -74,6 +74,7 @@ func TestCorrect(t *testing.T) {
 		for i := range tempSlc {
 			if len(testSlc) < len(tempSlc) {
 				t.Errorf("Bad value. Expected %s found %v", "", tempSlc)
+				return
 			}
 			if tempSlc[i] != testSlc[i] {
 				t.Errorf("Bad value. Expected %s found %v", testSlc[i], tempSlc[i])
