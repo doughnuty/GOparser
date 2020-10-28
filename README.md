@@ -1,5 +1,5 @@
-# Go yaml files parser
-Small parser for yaml files written in Go. 
+# Go config parser 
+Small parser for yaml files and environmental vars written in Go. 
 
 ## Synopsis 
 ```GO
