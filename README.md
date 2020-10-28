@@ -7,18 +7,21 @@ package main
 
 import (
 	"fmt"
-	"github.com/doughnuty/GOparser"
+	parser "github.com/doughnuty/GOparser"
 )
 
 func main() {
-	yaml := parser.NewYaml()
-	err := yaml.Parse("file.yaml")
+	config := parser.NewYaml()
+
+	yaml := parser.NewYamlSource("file.yaml")
+	env := parser.NewEnvSource(parser.WithPrefix("CGO"))
+
+	err := config.Load(yaml, env)
 	if err != nil {
-		fmt.Println(err)
+		...
 	}
 
-	ans := yaml.Get("student", "personal", "Name").String("hewwo")
-	fmt.Println(ans)
+    str := config.Get("server").StringMap(nil)
 }
 ```
 
