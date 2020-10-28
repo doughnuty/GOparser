@@ -8,10 +8,9 @@ import (
 func TestParse(t *testing.T) {
 	config := parser.NewYaml()
 
-	yaml := parser.NewYamlSource("file.yaml")
-	env := parser.NewEnvSource(parser.WithPrefix("CGO"))
-
-	err := config.Load(yaml, env)
+	sources := []parser.Source{parser.NewEnvSource(parser.WithPrefix("CGO"), parser.WithStrippedPrefix("IDEA")),
+		parser.NewYamlSource("file.yaml")}
+	err := config.Load(sources...)
 	if err != nil {
 		t.Errorf("Bad parsing. Error message is: %v", err)
 	}

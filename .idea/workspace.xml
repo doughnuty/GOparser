@@ -22,18 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458dc10-988a-4224-a0aa-159e93c3b8d8" name="Default Changelist" comment="spacing edited">
-      <change afterPath="$PROJECT_DIR$/loader.go" afterDir="false" />
+    <list default="true" id="c458dc10-988a-4224-a0aa-159e93c3b8d8" name="Default Changelist" comment="Load added Extra funcs removed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/envvar.go" beforeDir="false" afterPath="$PROJECT_DIR$/envvar.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/get.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/methods.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/property.go" beforeDir="false" afterPath="$PROJECT_DIR$/property.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/envs_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/envs_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/errors_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/errors_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/methods_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/methods_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/parsing_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/parsing_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +133,8 @@
     <MESSAGE value="w/ prefix &amp; stripped" />
     <MESSAGE value="w/ prefix &amp; stripped. runtime error" />
     <MESSAGE value="spacing edited" />
-    <option name="LAST_COMMIT_MESSAGE" value="spacing edited" />
+    <MESSAGE value="Load added Extra funcs removed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Load added Extra funcs removed" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -161,38 +152,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="550" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1603098160323" />
-    <state width="1492" height="268" key="GridCell.Tab.0.bottom" timestamp="1603715457732">
+    <state width="1492" height="268" key="GridCell.Tab.0.bottom" timestamp="1603888645925">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
-    <state width="1492" height="268" key="GridCell.Tab.0.center" timestamp="1603715457731">
+    <state width="1492" height="268" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603888645925" />
+    <state width="1492" height="268" key="GridCell.Tab.0.center" timestamp="1603888645924">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1603715457731" />
-    <state width="1492" height="268" key="GridCell.Tab.0.left" timestamp="1603715457731">
+    <state width="1492" height="268" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1603888645924" />
+    <state width="1492" height="268" key="GridCell.Tab.0.left" timestamp="1603888645924">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1603715457731" />
-    <state width="1492" height="268" key="GridCell.Tab.0.right" timestamp="1603715457732">
+    <state width="1492" height="268" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1603888645924" />
+    <state width="1492" height="268" key="GridCell.Tab.0.right" timestamp="1603888645924">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
-    <state width="1492" height="268" key="GridCell.Tab.1.bottom" timestamp="1603715457732">
+    <state width="1492" height="268" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1603888645924" />
+    <state width="1492" height="268" key="GridCell.Tab.1.bottom" timestamp="1603888646735">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
-    <state width="1492" height="268" key="GridCell.Tab.1.center" timestamp="1603715457732">
+    <state width="1492" height="268" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603888646735" />
+    <state width="1492" height="268" key="GridCell.Tab.1.center" timestamp="1603888646735">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
-    <state width="1492" height="268" key="GridCell.Tab.1.left" timestamp="1603715457732">
+    <state width="1492" height="268" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1603888646735" />
+    <state width="1492" height="268" key="GridCell.Tab.1.left" timestamp="1603888646734">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
-    <state width="1492" height="268" key="GridCell.Tab.1.right" timestamp="1603715457732">
+    <state width="1492" height="268" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1603888646734" />
+    <state width="1492" height="268" key="GridCell.Tab.1.right" timestamp="1603888646735">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
+    <state width="1492" height="268" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1603888646735" />
     <state x="279" y="78" key="SettingsEditor" timestamp="1603097942411">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -259,6 +250,11 @@
           <url>file://$PROJECT_DIR$/methods.go</url>
           <line>96</line>
           <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/test/methods_test.go</url>
+          <line>22</line>
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
