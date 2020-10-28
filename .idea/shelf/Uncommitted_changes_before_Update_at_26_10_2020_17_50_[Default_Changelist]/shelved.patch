@@ -1,0 +1,131 @@
+Index: test/file.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Hello World\r\nstudent:\r\n  personal:\r\n    ID: 654321\r\n    Name: \"M A\"\r\n    HeightHistory: 103.6\r\n    HoursActive: 1h2m3s # you know its comment right?\r\n\r\n  clubs:\r\n    Art:\r\n      To_Do:\r\n        - Exhibition\r\n        - New Album\r\n\r\n  stats:\r\n    canVote: False\r\n    hasTime: True\r\n\r\n# One more comment here\r\nworker:\r\n  personal:\r\n    ID: 123456\r\n    Name: B\r\n\r\n  pets: [dog, cat, bird, snake] # glad it works\r\n\r\n  stats:\r\n    canVote: True\r\n    hasTime: False\r\n\r\nnoone:\r\n  more stats:\r\n    - # what you will do this time tho\r\n    - good job\r\n\r\n# And here is another comment\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- test/file.yaml	(revision 712268b5658492703713e61bc95cb2a32b218c5e)
++++ test/file.yaml	(date 1603712819234)
+@@ -5,7 +5,15 @@
+     Name: "M A"
+     HeightHistory: 103.6
+     HoursActive: 1h2m3s # you know its comment right?
+-
++    in:
++      out:
++        ahead:
++          inside:
++            beneath:
++              underneath:
++                deep down:
++                  in forest:
++                    climb: it
+   clubs:
+     Art:
+       To_Do:
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c458dc10-988a-4224-a0aa-159e93c3b8d8\" name=\"Default Changelist\" comment=\"w/ prefix &amp; stripped. runtime error\">\r\n      <change afterPath=\"$PROJECT_DIR$/test/envs_test.go\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/envvar.go\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/envvar.go\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/methods.go\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/methods.go\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Go File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"GOROOT\" path=\"C:\\Go\" />\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"nonRecursive\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GoLibraries\">\r\n    <option name=\"indexEntireGoPath\" value=\"false\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1irmGQUdBYTai6sq8NOsfDWSfHE\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"DefaultGoTemplateProperty\" value=\"Go File\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"go.import.settings.migrated\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../../../GOparser\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.keymap\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Go Test.go test github.com/doughnuty/GOparser/test\">\r\n    <configuration default=\"true\" type=\"GoTestRunConfiguration\" factoryName=\"Go Test\">\r\n      <module name=\"GOparser\" />\r\n      <working_directory value=\"$PROJECT_DIR$\" />\r\n      <go_parameters value=\"-i\" />\r\n      <framework value=\"gotest\" />\r\n      <kind value=\"DIRECTORY\" />\r\n      <package value=\"github.com/doughnuty/GOparser\" />\r\n      <directory value=\"$PROJECT_DIR$/test\" />\r\n      <filePath value=\"$PROJECT_DIR$\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"go test github.com/doughnuty/GOparser/test\" type=\"GoTestRunConfiguration\" factoryName=\"Go Test\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"GOparser\" />\r\n      <working_directory value=\"$PROJECT_DIR$/test\" />\r\n      <framework value=\"gotest\" />\r\n      <kind value=\"PACKAGE\" />\r\n      <package value=\"github.com/doughnuty/GOparser/test\" />\r\n      <directory value=\"$PROJECT_DIR$/test\" />\r\n      <filePath value=\"$PROJECT_DIR$\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"gobench github.com/doughnuty/GOparser/test\" type=\"GoTestRunConfiguration\" factoryName=\"Go Test\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"GOparser\" />\r\n      <working_directory value=\"$PROJECT_DIR$/test\" />\r\n      <framework value=\"gobench\" />\r\n      <kind value=\"PACKAGE\" />\r\n      <package value=\"github.com/doughnuty/GOparser/test\" />\r\n      <directory value=\"$PROJECT_DIR$/test\" />\r\n      <filePath value=\"$PROJECT_DIR$\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Go Test.go test github.com/doughnuty/GOparser/test\" />\r\n        <item itemvalue=\"Go Test.gobench github.com/doughnuty/GOparser/test\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"refactor complete\" />\r\n    <MESSAGE value=\"more concise\" />\r\n    <MESSAGE value=\"Environment vars support\" />\r\n    <MESSAGE value=\"edited smth\" />\r\n    <MESSAGE value=\"improved state (with chan) added no chan lexer\" />\r\n    <MESSAGE value=\"added quote\" />\r\n    <MESSAGE value=\"w/ prefix &amp; stripped\" />\r\n    <MESSAGE value=\"w/ prefix &amp; stripped. runtime error\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"w/ prefix &amp; stripped. runtime error\" />\r\n  </component>\r\n  <component name=\"VgoProject\">\r\n    <integration-enabled>true</integration-enabled>\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"225\" y=\"88\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog\" timestamp=\"1602674031417\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"225\" y=\"88\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864\" timestamp=\"1602674031417\" />\r\n    <state x=\"94\" y=\"94\" width=\"1349\" height=\"677\" key=\"DiffContextDialog\" timestamp=\"1603279839375\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"94\" y=\"94\" width=\"1349\" height=\"677\" key=\"DiffContextDialog/0.0.1536.864@0.0.1536.864\" timestamp=\"1603279839375\" />\r\n    <state x=\"550\" y=\"188\" key=\"FileChooserDialogImpl\" timestamp=\"1603098160323\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"550\" y=\"188\" key=\"FileChooserDialogImpl/0.0.1536.864@0.0.1536.864\" timestamp=\"1603098160323\" />\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1603457447442\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864\" timestamp=\"1603457447442\" />\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.0.center\" timestamp=\"1603457447441\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864\" timestamp=\"1603457447441\" />\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.0.left\" timestamp=\"1603457447441\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864\" timestamp=\"1603457447441\" />\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.0.right\" timestamp=\"1603457447441\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864\" timestamp=\"1603457447441\" />\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.1.bottom\" timestamp=\"1603457447442\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864\" timestamp=\"1603457447442\" />\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.1.center\" timestamp=\"1603457447442\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864\" timestamp=\"1603457447442\" />\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.1.left\" timestamp=\"1603457447442\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864\" timestamp=\"1603457447442\" />\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.1.right\" timestamp=\"1603457447442\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state width=\"1492\" height=\"268\" key=\"GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864\" timestamp=\"1603457447442\" />\r\n    <state x=\"279\" y=\"78\" key=\"SettingsEditor\" timestamp=\"1603097942411\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"279\" y=\"78\" key=\"SettingsEditor/0.0.1536.864@0.0.1536.864\" timestamp=\"1603097942411\" />\r\n    <state x=\"362\" y=\"166\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1603386827536\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"362\" y=\"166\" key=\"Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864\" timestamp=\"1603386827536\" />\r\n    <state x=\"94\" y=\"94\" width=\"1349\" height=\"677\" key=\"com.intellij.history.integration.ui.views.DirectoryHistoryDialog\" timestamp=\"1603098161925\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"94\" y=\"94\" width=\"1349\" height=\"677\" key=\"com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.864@0.0.1536.864\" timestamp=\"1603098161925\" />\r\n    <state x=\"588\" y=\"347\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1603378782906\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"588\" y=\"347\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864\" timestamp=\"1603378782906\" />\r\n    <state x=\"322\" y=\"162\" key=\"com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2\" timestamp=\"1602683023102\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"322\" y=\"162\" key=\"com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864\" timestamp=\"1602683023102\" />\r\n    <state x=\"431\" y=\"182\" width=\"672\" height=\"678\" key=\"search.everywhere.popup\" timestamp=\"1603455362624\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"431\" y=\"182\" width=\"672\" height=\"678\" key=\"search.everywhere.popup/0.0.1536.864@0.0.1536.864\" timestamp=\"1603455362624\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint type=\"DlvLineBreakpoint\">\r\n          <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>\r\n          <line>90</line>\r\n          <option name=\"timeStamp\" value=\"6\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint type=\"DlvLineBreakpoint\">\r\n          <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>\r\n          <line>73</line>\r\n          <option name=\"timeStamp\" value=\"9\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint type=\"DlvLineBreakpoint\">\r\n          <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>\r\n          <line>79</line>\r\n          <option name=\"timeStamp\" value=\"10\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint type=\"DlvLineBreakpoint\">\r\n          <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>\r\n          <line>77</line>\r\n          <option name=\"timeStamp\" value=\"11\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint type=\"DlvLineBreakpoint\">\r\n          <url>file://$PROJECT_DIR$/lexer/lexerState.go</url>\r\n          <line>74</line>\r\n          <option name=\"timeStamp\" value=\"12\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"DlvLineBreakpoint\">\r\n          <url>file://$PROJECT_DIR$/envvar.go</url>\r\n          <line>142</line>\r\n          <option name=\"timeStamp\" value=\"53\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"DlvLineBreakpoint\">\r\n          <url>file://$PROJECT_DIR$/methods.go</url>\r\n          <line>96</line>\r\n          <option name=\"timeStamp\" value=\"69\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"DlvLineBreakpoint\">\r\n          <url>file://$PROJECT_DIR$/methods.go</url>\r\n          <line>101</line>\r\n          <option name=\"timeStamp\" value=\"70\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n      <default-breakpoints>\r\n        <breakpoint type=\"DlvErrorBreakpoint\" />\r\n      </default-breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 712268b5658492703713e61bc95cb2a32b218c5e)
++++ .idea/workspace.xml	(date 1603712890058)
+@@ -22,11 +22,10 @@
+     <select />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c458dc10-988a-4224-a0aa-159e93c3b8d8" name="Default Changelist" comment="w/ prefix &amp; stripped. runtime error">
+-      <change afterPath="$PROJECT_DIR$/test/envs_test.go" afterDir="false" />
++    <list default="true" id="c458dc10-988a-4224-a0aa-159e93c3b8d8" name="Default Changelist" comment="squash! spacing edited">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/envvar.go" beforeDir="false" afterPath="$PROJECT_DIR$/envvar.go" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/methods.go" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser.go" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/test/file.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/test/file.yaml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -44,7 +43,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="nonRecursive" />
++        <entry key="$PROJECT_DIR$" value="noChan" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -153,38 +152,38 @@
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+     <state x="550" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1603098160323" />
+-    <state width="1492" height="268" key="GridCell.Tab.0.bottom" timestamp="1603457447442">
++    <state width="1492" height="268" key="GridCell.Tab.0.bottom" timestamp="1603712862727">
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+-    <state width="1492" height="268" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603457447442" />
+-    <state width="1492" height="268" key="GridCell.Tab.0.center" timestamp="1603457447441">
++    <state width="1492" height="268" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603712862727" />
++    <state width="1492" height="268" key="GridCell.Tab.0.center" timestamp="1603712862726">
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+-    <state width="1492" height="268" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1603457447441" />
+-    <state width="1492" height="268" key="GridCell.Tab.0.left" timestamp="1603457447441">
++    <state width="1492" height="268" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1603712862726" />
++    <state width="1492" height="268" key="GridCell.Tab.0.left" timestamp="1603712862726">
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+-    <state width="1492" height="268" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1603457447441" />
+-    <state width="1492" height="268" key="GridCell.Tab.0.right" timestamp="1603457447441">
++    <state width="1492" height="268" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1603712862726" />
++    <state width="1492" height="268" key="GridCell.Tab.0.right" timestamp="1603712862727">
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+-    <state width="1492" height="268" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1603457447441" />
+-    <state width="1492" height="268" key="GridCell.Tab.1.bottom" timestamp="1603457447442">
++    <state width="1492" height="268" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1603712862726" />
++    <state width="1492" height="268" key="GridCell.Tab.1.bottom" timestamp="1603712863656">
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+-    <state width="1492" height="268" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603457447442" />
+-    <state width="1492" height="268" key="GridCell.Tab.1.center" timestamp="1603457447442">
++    <state width="1492" height="268" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603712863656" />
++    <state width="1492" height="268" key="GridCell.Tab.1.center" timestamp="1603712863656">
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+-    <state width="1492" height="268" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1603457447442" />
+-    <state width="1492" height="268" key="GridCell.Tab.1.left" timestamp="1603457447442">
++    <state width="1492" height="268" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1603712863656" />
++    <state width="1492" height="268" key="GridCell.Tab.1.left" timestamp="1603712863656">
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+-    <state width="1492" height="268" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1603457447442" />
+-    <state width="1492" height="268" key="GridCell.Tab.1.right" timestamp="1603457447442">
++    <state width="1492" height="268" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1603712863656" />
++    <state width="1492" height="268" key="GridCell.Tab.1.right" timestamp="1603712863656">
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+-    <state width="1492" height="268" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1603457447442" />
++    <state width="1492" height="268" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1603712863656" />
+     <state x="279" y="78" key="SettingsEditor" timestamp="1603097942411">
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+@@ -252,6 +251,16 @@
+           <url>file://$PROJECT_DIR$/methods.go</url>
+           <line>101</line>
+           <option name="timeStamp" value="70" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
++          <url>file://$PROJECT_DIR$/test/methods_test.go</url>
++          <line>18</line>
++          <option name="timeStamp" value="72" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
++          <url>file://$PROJECT_DIR$/parser.go</url>
++          <line>142</line>
++          <option name="timeStamp" value="74" />
+         </line-breakpoint>
+       </breakpoints>
+       <default-breakpoints>
