@@ -20,22 +20,24 @@ func (yaml *Yaml) checkIndentSpaces(spaces string) bool {
 		valLen%2 == 0
 }
 
-func (yaml *Yaml) ParseFiles(filename string) error {
+func (yaml *Yaml) parseFiles(filenames []string) error {
+	var err error
+	for _, file := range filenames {
+		buf, err := ioutil.ReadFile(file)
+		if err != nil {
+			//fmt.Println(err)
+			return err
+		}
 
-	buf, err := ioutil.ReadFile(filename)
-	if err != nil {
-		//fmt.Println(err)
-		return err
-	}
+		str := string(buf)
 
-	str := string(buf)
+		l := lexer.LexStart(str)
+		l.Following = l.NextToken()
 
-	l := lexer.LexStart(str)
-	l.Following = l.NextToken()
-
-	err = yaml.parseTokens(l)
-	if err != nil {
-		return err
+		err = yaml.parseTokens(l)
+		if err != nil {
+			return err
+		}
 	}
 	return err
 }
@@ -114,8 +116,8 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 				return err
 			}
 			(*yaml).Map[keyVal] = Property{
-				Mod: VAL_MOD,
-				Val: value,
+				mod: VAL_MOD,
+				val: value,
 			}
 			keyVal = ""
 			if len(l.Following.Value) < yaml.Spacing || l.Following.Mod == token.TOKEN_EOF {
@@ -131,8 +133,8 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 			tempSlice = append(tempSlice, value)
 			if len(l.Following.Value) <= yaml.Spacing || l.Following.Mod == token.TOKEN_EOF {
 				(*yaml).Map[keyVal] = Property{
-					Mod: ARR_MOD,
-					Val: tempSlice,
+					mod: ARR_MOD,
+					val: tempSlice,
 				}
 				tempSlice = make([]string, 0, 10)
 				*yaml, yamlSlice = pop(yamlSlice)
@@ -162,8 +164,8 @@ func (yaml *Yaml) parseTokens(l *lexer.Lexer) error {
 					newYaml.Spacing = len(l.Current.Value)
 					*yaml = newYaml
 					oldYaml.Map[keyVal] = Property{
-						Mod: MAP_MOD,
-						Val: *yaml,
+						mod: MAP_MOD,
+						val: *yaml,
 					}
 					keyVal = ""
 				}

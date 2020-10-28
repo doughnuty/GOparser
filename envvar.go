@@ -2,7 +2,6 @@ package GOparser
 
 import (
 	"errors"
-	"fmt"
 	"os"
 	"strings"
 )
@@ -10,25 +9,6 @@ import (
 type Prefix struct {
 	prefix   string
 	stripped string
-}
-
-// Parse given environmental variables and save to the structure
-func (yaml *Yaml) ParseEnv(env ...string) error {
-	var err error = nil
-	errstr := "no value for the key"
-	for _, key := range env {
-		val, ok := os.LookupEnv(key)
-		if ok {
-			yaml.Map[key] = Property{
-				Mod: VAL_MOD,
-				Val: val,
-			}
-		} else {
-			errstr = fmt.Sprintf("%s %s", errstr, key)
-			err = errors.New(errstr)
-		}
-	}
-	return err
 }
 
 func concat(opts []string) string {
@@ -58,7 +38,7 @@ func WithStrippedPrefix(opts ...string) Prefix {
 }
 
 // parse .env file and save to the structure
-func (yaml *Yaml) ParseDotEnv(pref ...Prefix) error {
+func (yaml *Yaml) parseDotEnv(pref []Prefix) error {
 	for _, env := range os.Environ() {
 		if len(pref) > 0 {
 			notFound := true
@@ -124,37 +104,37 @@ func (yaml *Yaml) FillYaml(keys []string, val string) error {
 	for i, key := range keys {
 		var newYaml Yaml
 
-		if yaml.Map[key].Mod != MAP_MOD && i != len(keys)-1 { // which one - empty or map? what to do if
+		if yaml.Map[key].mod != MAP_MOD && i != len(keys)-1 { // which one - empty or map? what to do if
 			// if there's two envs A_B = X && A = X ?
 			newYaml = NewYaml()
 			if newYaml.Map == nil {
 				return errors.New("error initializing new yaml")
 			}
 			yaml.Map[key] = Property{
-				Mod: MAP_MOD,
-				Val: newYaml,
+				mod: MAP_MOD,
+				val: newYaml,
 			}
 		} else if i == len(keys)-1 {
-			if yaml.Map[key].Mod != EMPTY_MOD {
+			/*if yaml.Map[key].mod != EMPTY_MOD {
 				return errors.New("reassignment of a value is prohibited")
-			}
+			}*/
 
 			if yaml.Map == nil {
 				return errors.New("assignment to a nil map is prohibited")
 			}
 
 			yaml.Map[key] = Property{
-				Mod: VAL_MOD,
-				Val: val,
+				mod: VAL_MOD,
+				val: val,
 			}
 			return nil
 
-		} else if yaml.Map[key].Mod == MAP_MOD {
-			newYaml = yaml.Map[key].Val.(Yaml)
+		} else if yaml.Map[key].mod == MAP_MOD {
+			newYaml = yaml.Map[key].val.(Yaml)
 
 			yaml.Map[key] = Property{
-				Mod: MAP_MOD,
-				Val: newYaml,
+				mod: MAP_MOD,
+				val: newYaml,
 			}
 		}
 

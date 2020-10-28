@@ -22,10 +22,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c458dc10-988a-4224-a0aa-159e93c3b8d8" name="Default Changelist" comment="w/ prefix &amp; stripped. runtime error">
+    <list default="true" id="c458dc10-988a-4224-a0aa-159e93c3b8d8" name="Default Changelist" comment="spacing edited">
+      <change afterPath="$PROJECT_DIR$/loader.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/envvar.go" beforeDir="false" afterPath="$PROJECT_DIR$/envvar.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get.go" beforeDir="false" afterPath="$PROJECT_DIR$/get.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods.go" beforeDir="false" afterPath="$PROJECT_DIR$/methods.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/property.go" beforeDir="false" afterPath="$PROJECT_DIR$/property.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/envs_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/envs_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/errors_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/errors_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/methods_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/methods_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/parsing_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/parsing_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +142,8 @@
     <MESSAGE value="added quote" />
     <MESSAGE value="w/ prefix &amp; stripped" />
     <MESSAGE value="w/ prefix &amp; stripped. runtime error" />
-    <option name="LAST_COMMIT_MESSAGE" value="w/ prefix &amp; stripped. runtime error" />
+    <MESSAGE value="spacing edited" />
+    <option name="LAST_COMMIT_MESSAGE" value="spacing edited" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -152,38 +161,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="550" y="188" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1603098160323" />
-    <state width="1492" height="268" key="GridCell.Tab.0.bottom" timestamp="1603709952780">
+    <state width="1492" height="268" key="GridCell.Tab.0.bottom" timestamp="1603715457732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603709952780" />
-    <state width="1492" height="268" key="GridCell.Tab.0.center" timestamp="1603709952780">
+    <state width="1492" height="268" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
+    <state width="1492" height="268" key="GridCell.Tab.0.center" timestamp="1603715457731">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1603709952780" />
-    <state width="1492" height="268" key="GridCell.Tab.0.left" timestamp="1603709952779">
+    <state width="1492" height="268" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1603715457731" />
+    <state width="1492" height="268" key="GridCell.Tab.0.left" timestamp="1603715457731">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1603709952779" />
-    <state width="1492" height="268" key="GridCell.Tab.0.right" timestamp="1603709952780">
+    <state width="1492" height="268" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1603715457731" />
+    <state width="1492" height="268" key="GridCell.Tab.0.right" timestamp="1603715457732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1603709952780" />
-    <state width="1492" height="268" key="GridCell.Tab.1.bottom" timestamp="1603709952781">
+    <state width="1492" height="268" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
+    <state width="1492" height="268" key="GridCell.Tab.1.bottom" timestamp="1603715457732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603709952781" />
-    <state width="1492" height="268" key="GridCell.Tab.1.center" timestamp="1603709952780">
+    <state width="1492" height="268" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
+    <state width="1492" height="268" key="GridCell.Tab.1.center" timestamp="1603715457732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1603709952780" />
-    <state width="1492" height="268" key="GridCell.Tab.1.left" timestamp="1603709952780">
+    <state width="1492" height="268" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
+    <state width="1492" height="268" key="GridCell.Tab.1.left" timestamp="1603715457732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1603709952780" />
-    <state width="1492" height="268" key="GridCell.Tab.1.right" timestamp="1603709952781">
+    <state width="1492" height="268" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
+    <state width="1492" height="268" key="GridCell.Tab.1.right" timestamp="1603715457732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1492" height="268" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1603709952781" />
+    <state width="1492" height="268" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1603715457732" />
     <state x="279" y="78" key="SettingsEditor" timestamp="1603097942411">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -192,6 +201,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1603386827536" />
+    <state x="544" y="211" key="com.goide.refactor.move.GoMoveDeclarationDialog" timestamp="1603887643112">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="544" y="211" key="com.goide.refactor.move.GoMoveDeclarationDialog/0.0.1536.864@0.0.1536.864" timestamp="1603887643112" />
     <state x="94" y="94" width="1349" height="677" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1603098161925">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -204,10 +217,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="322" y="162" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864" timestamp="1602683023102" />
-    <state x="431" y="182" width="672" height="678" key="search.everywhere.popup" timestamp="1603455362624">
+    <state x="431" y="182" width="672" height="678" key="search.everywhere.popup" timestamp="1603717954204">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="431" y="182" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1603455362624" />
+    <state x="431" y="182" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1603717954204" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -239,28 +252,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/envvar.go</url>
-          <line>142</line>
+          <line>122</line>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/methods.go</url>
           <line>96</line>
           <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/methods.go</url>
-          <line>101</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/test/methods_test.go</url>
-          <line>18</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/parser.go</url>
-          <line>142</line>
-          <option name="timeStamp" value="74" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

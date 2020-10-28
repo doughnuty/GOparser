@@ -6,14 +6,14 @@ type Yaml struct {
 }
 
 type Property struct {
-	Mod PropertyMod
-	Val interface{}
+	mod propertyMod
+	val interface{}
 }
 
-type PropertyMod int
+type propertyMod int
 
 const (
-	EMPTY_MOD PropertyMod = iota
+	EMPTY_MOD propertyMod = iota
 	VAL_MOD
 	MAP_MOD
 	ARR_MOD

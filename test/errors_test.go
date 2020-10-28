@@ -1,22 +1,24 @@
 package parser
 
 import (
-	"github.com/doughnuty/GOparser"
+	parser "github.com/doughnuty/GOparser"
 	"reflect"
 	"testing"
 	"time"
 )
 
 func TestErrors(t *testing.T) {
-	yaml := GOparser.NewYaml()
+	config := parser.NewYaml()
 
-	err := yaml.ParseFiles("file.yaml")
+	yaml := parser.NewYamlSource("file.yaml")
+	env := parser.NewEnvSource(parser.WithPrefix("CGO"))
+
+	err := config.Load(yaml, env)
 	if err != nil {
 		t.Errorf("Bad parsing. Error message is: %v", err)
 	}
-
 	//Bool(def bool) bool
-	tempBool := yaml.Get("student", "stats").Bool(false)
+	tempBool := config.Get("student", "stats").Bool(false)
 	if reflect.TypeOf(tempBool) != reflect.TypeOf(false) {
 		t.Errorf("Conflicting types. Expected %s found %v", "bool", reflect.TypeOf(tempBool))
 	}
@@ -25,7 +27,7 @@ func TestErrors(t *testing.T) {
 	}
 
 	//Int(def int) int
-	tempInt := yaml.Get("student", "personal", "HoursActive").Int(0)
+	tempInt := config.Get("student", "personal", "HoursActive").Int(0)
 	if reflect.TypeOf(tempInt) != reflect.TypeOf(1) {
 		t.Errorf("Conflicting types. Expected %s found %v", "int", reflect.TypeOf(tempInt))
 	}
@@ -34,7 +36,7 @@ func TestErrors(t *testing.T) {
 	}
 
 	//String(def string) string
-	tempStr := yaml.Get("student", "personal").String("Name")
+	tempStr := config.Get("student", "personal").String("Name")
 	if reflect.TypeOf(tempStr) != reflect.TypeOf("Name") {
 		t.Errorf("Conflicting types. Expected %s found %v", "string", reflect.TypeOf(tempStr))
 	}
@@ -43,7 +45,7 @@ func TestErrors(t *testing.T) {
 	}
 
 	//Float64(def float64) float64
-	tempFlt := yaml.Get("student", "personal", "").Float64(0.0)
+	tempFlt := config.Get("student", "personal", "").Float64(0.0)
 	if reflect.TypeOf(tempFlt) != reflect.TypeOf(0.0) {
 		t.Errorf("Conflicting types. Expected %s found %v", "float64", reflect.TypeOf(tempFlt))
 	}
@@ -53,7 +55,7 @@ func TestErrors(t *testing.T) {
 
 	//Duration(def time.Duration) time.Duration
 	testDur, _ := time.ParseDuration("0")
-	tempDur := yaml.Get("student", "personal", "ID").Duration(testDur)
+	tempDur := config.Get("student", "personal", "ID").Duration(testDur)
 	if reflect.TypeOf(tempDur) != reflect.TypeOf(testDur) {
 		t.Errorf("Conflicting types. Expected %s found %v", "duration", reflect.TypeOf(tempDur))
 	}
@@ -66,7 +68,7 @@ func TestErrors(t *testing.T) {
 	testSlc := make([]string, testSlcSize)
 	testSlc[0] = "Exhibition"
 	testSlc[1] = "New Album"
-	tempSlc := yaml.Get("student", "clubs", "Art").StringSlice(nil)
+	tempSlc := config.Get("student", "clubs", "Art").StringSlice(nil)
 	if reflect.TypeOf(tempSlc) != reflect.TypeOf(testSlc) {
 		t.Errorf("Conflicting types. Expected %s found %v", "string slice", reflect.TypeOf(tempSlc))
 	}
@@ -78,19 +80,19 @@ func TestErrors(t *testing.T) {
 	testMap := make(map[string]string, 2)
 	testMap["ID"] = "123456"
 	testMap["Name"] = "B"
-	tempMap := yaml.Get("worker").StringMap(nil)
+	tempMap := config.Get("worker").StringMap(nil)
 	if reflect.TypeOf(tempMap) != reflect.TypeOf(testMap) {
 		t.Errorf("Conflicting types. Expected %s found %v", "map", reflect.TypeOf(tempMap))
 	}
 	if tempMap != nil {
 		t.Errorf("Successful parse of erroneous path")
 
-		t.Errorf("Parsed as %v", yaml.Get("worker"))
+		t.Errorf("Parsed as %v", config.Get("worker"))
 	}
 
 	//Bytes() []byte
 	var testBts []byte
-	tempBts := yaml.Get("").Bytes()
+	tempBts := config.Get("").Bytes()
 	if reflect.TypeOf(tempBts) != reflect.TypeOf(testBts) {
 		t.Errorf("Conflicting types. Expected %s found %v", "", reflect.TypeOf(tempBts))
 	}

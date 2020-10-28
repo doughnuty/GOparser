@@ -1,25 +1,27 @@
 package parser
 
 import (
-	"github.com/doughnuty/GOparser"
+	parser "github.com/doughnuty/GOparser"
 	"testing"
 )
 
 func TestEnv(t *testing.T) {
-	yamlEnv := GOparser.NewYaml()
+	config := parser.NewYaml()
 
-	err := yamlEnv.ParseDotEnv(GOparser.WithStrippedPrefix("IDEA"), GOparser.WithPrefix("CGO"))
+	env := parser.NewEnvSource(parser.WithPrefix("CGO"), parser.WithStrippedPrefix("IDEA"))
+
+	err := config.Load(env)
 	if err != nil {
 		t.Errorf("Bad parsing. Error message is: %v", err)
 	}
 
-	testMap := yamlEnv.Get("cgo").StringMap(nil)
+	testMap := config.Get("cgo").StringMap(nil)
 	if testMap == nil {
 		t.Errorf("unsuccessfull parse")
-		t.Errorf("Parsed as %v", yamlEnv.Get("cgo"))
+		t.Errorf("Parsed as %v", config.Get("cgo"))
 	}
 
-	testString := yamlEnv.Get("initial", "directory").String("")
+	testString := config.Get("initial", "directory").String("")
 	if testString == "" {
 		t.Errorf("Error parsing a string")
 	}
